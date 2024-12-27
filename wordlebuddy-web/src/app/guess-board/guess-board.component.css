@@ -1,6 +1,5 @@
 .guess-board {
   display: grid;
   gap: 10px;
-  background-color: #121213;
   padding: 20px;
 }

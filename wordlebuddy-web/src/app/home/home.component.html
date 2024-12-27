@@ -1,3 +1,4 @@
 <div class="main">
-  <app-guess-board />
+  <app-guess-board [guesses]="guesses" />
+  <app-guess-input-button (newGuess)="addGuess($event)" />
 </div>

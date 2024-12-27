@@ -1,0 +1,5 @@
+@if (showPopup) {
+<app-guess-input-popup (close)="closePopup()" (guess)="submitGuess($event)" />
+}
+
+<button (click)="openPopup()">Add Guess</button>

@@ -1,0 +1,12 @@
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-container">
+  <h2>New Guess</h2>
+  <form [formGroup]="guessForm">
+    <input formControlName="word" placeholder="Enter your guess" />
+    <input formControlName="colors" placeholder="Enter colors" />
+    <button type="submit" (click)="submitGuess()" [disabled]="!guessForm.valid">
+      Submit
+    </button>
+  </form>
+  <button (click)="closePopup()">Close</button>
+</div>

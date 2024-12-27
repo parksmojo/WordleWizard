@@ -18,8 +18,14 @@ export class GuessInputPopupComponent {
   @Output() guess = new EventEmitter<Guess>();
 
   guessForm = new FormGroup({
-    word: new FormControl('', Validators.required),
-    colors: new FormControl('', Validators.required),
+    word: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-z]{5}$/i),
+    ]),
+    colors: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[bgy]{5}$/i),
+    ]),
   });
 
   submitGuess() {

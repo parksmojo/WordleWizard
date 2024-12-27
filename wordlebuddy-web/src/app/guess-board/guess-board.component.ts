@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-guess-board',
   imports: [],
   templateUrl: './guess-board.component.html',
-  styleUrl: './guess-board.component.css'
+  styleUrl: './guess-board.component.css',
 })
-export class GuessBoardComponent {
-
-}
+export class GuessBoardComponent {}

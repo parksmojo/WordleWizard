@@ -45,6 +45,6 @@ export class Guess {
   }
 
   public get score() {
-    return this.score;
+    return this._score;
   }
 }

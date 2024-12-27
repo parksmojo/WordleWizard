@@ -1,0 +1,18 @@
+.guess-row {
+  display: flex;
+  gap: 10px;
+}
+
+.guess-tile {
+  width: 50px;
+  height: 50px;
+  background-color: #3a3a3c;
+  border: 2px solid #565758;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 5px;
+}

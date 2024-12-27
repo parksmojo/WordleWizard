@@ -1,44 +1,5 @@
 <div class="guess-board">
-  <div id="guess1" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
-  <div id="guess2" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
-  <div id="guess3" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
-  <div id="guess4" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
-  <div id="guess5" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
-  <div id="guess6" class="guess-row">
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-    <div class="guess-tile">a</div>
-  </div>
+  @for (guess of guesses; track guess.word) {
+  <app-guess-row [guess]="guess" />
+  }
 </div>

@@ -1,5 +1,10 @@
 <div class="guess-row">
   @for(letter of guess.letters; track $index){
-  <div class="guess-tile">{{ letter }}</div>
+  <div
+    class="guess-tile"
+    [style]="{ 'background-color': getColor(guess.colors[$index]) }"
+  >
+    {{ letter }}
+  </div>
   }
 </div>

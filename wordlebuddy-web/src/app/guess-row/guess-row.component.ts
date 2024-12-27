@@ -9,4 +9,13 @@ import { Guess } from 'wordlebuddy-shared';
 })
 export class GuessRowComponent {
   @Input() guess: Guess = new Guess('tales', 'bbbbb');
+
+  getColor(colorCode: string): string {
+    const colorMap: { [key: string]: string } = {
+      b: '#3a3a3c',
+      y: '#b59f3b',
+      g: '#538d4e',
+    };
+    return colorMap[colorCode] || 'red';
+  }
 }

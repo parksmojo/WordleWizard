@@ -28,7 +28,7 @@ export class Guess {
     }
     this._word = guess.toLowerCase();
     this._colors = colors.toLowerCase();
-    this._score = this.answerFormat.test(colors) ? 0 : this.calcScore(this._colors);
+    this._score = this.answerFormat.test(colors) ? -1 : this.calcScore(this._colors);
   }
 
   private calcScore(colors: string) {

@@ -11,8 +11,17 @@ import { GuessInputButtonComponent } from '../guess-input-button/guess-input-but
 })
 export class HomeComponent {
   guesses: Guess[] = [];
+  foundAnswer: boolean = false;
 
   addGuess(guess: Guess) {
     this.guesses.push(guess);
+    if (guess.score === -1) {
+      this.foundAnswer = true;
+    }
+  }
+
+  resetGame() {
+    this.guesses = [];
+    this.foundAnswer = false;
   }
 }

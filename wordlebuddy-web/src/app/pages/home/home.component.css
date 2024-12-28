@@ -1,5 +1,7 @@
 button {
-  width: 50%;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 100%;
   background-color: #58a351;
   border-radius: 20px;

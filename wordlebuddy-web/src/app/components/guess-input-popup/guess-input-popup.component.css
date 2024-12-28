@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 999;
 }
 
@@ -15,6 +15,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid gray;
+  background-color: #121213;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -38,7 +39,9 @@ form {
 }
 
 button {
-  width: 50%;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 100%;
   background-color: #f5f5f5;
   border-radius: 20px;

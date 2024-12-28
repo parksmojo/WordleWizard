@@ -6,10 +6,9 @@
       [word]="guessForm.value.word!"
       (colorString)="setColors($event)"
     />
-    <input formControlName="word" placeholder="Enter your guess" />
+    <input formControlName="word" placeholder="Enter guess" />
     <button type="submit" (click)="submitGuess()" [disabled]="!guessForm.valid">
       Submit
     </button>
   </form>
-  <button (click)="closePopup()">Close</button>
 </div>

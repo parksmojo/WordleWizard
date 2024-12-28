@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Guess } from 'wordlebuddy-shared';
 
 @Component({
@@ -9,7 +9,8 @@ import { Guess } from 'wordlebuddy-shared';
 })
 export class ColorPickerComponent {
   @Input() word: string = '';
-  colors = ['b', 'g', 'y', 'b', 'b'];
+  @Output() colorString = new EventEmitter<string>();
+  colors = ['b', 'b', 'b', 'b', 'b'];
 
   getColor(colorCode: string): string {
     return Guess.getColorHex(colorCode);
@@ -17,5 +18,10 @@ export class ColorPickerComponent {
 
   nextColor(index: number): void {
     this.colors[index] = Guess.nextColor(this.colors[index]);
+    this.submitColors();
+  }
+
+  submitColors(): void {
+    this.colorString.emit(this.colors.join(''));
   }
 }

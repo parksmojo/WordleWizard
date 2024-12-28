@@ -17,22 +17,21 @@ import { ColorPickerComponent } from '../color-picker/color-picker.component';
 export class GuessInputPopupComponent {
   @Output() close = new EventEmitter<void>();
   @Output() guess = new EventEmitter<Guess>();
+  colors = 'bbbbb';
 
   guessForm = new FormGroup({
     word: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[a-z]{5}$/i),
     ]),
-    colors: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^[bgy]{5}$/i),
-    ]),
   });
 
+  setColors(colorString: string) {
+    this.colors = colorString;
+  }
+
   submitGuess() {
-    this.guess.emit(
-      new Guess(this.guessForm.value.word!, this.guessForm.value.colors!)
-    );
+    this.guess.emit(new Guess(this.guessForm.value.word!, this.colors));
   }
 
   closePopup() {

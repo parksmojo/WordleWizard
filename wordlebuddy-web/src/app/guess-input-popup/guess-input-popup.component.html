@@ -2,9 +2,11 @@
 <div class="popup-container">
   <h2>New Guess</h2>
   <form [formGroup]="guessForm">
+    <app-color-picker
+      [word]="guessForm.value.word!"
+      (colorString)="setColors($event)"
+    />
     <input formControlName="word" placeholder="Enter your guess" />
-    <input formControlName="colors" placeholder="Enter colors" />
-    <app-color-picker [word]="guessForm.value.word!" />
     <button type="submit" (click)="submitGuess()" [disabled]="!guessForm.valid">
       Submit
     </button>

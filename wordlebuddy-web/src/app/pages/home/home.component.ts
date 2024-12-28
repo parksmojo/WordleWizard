@@ -4,10 +4,16 @@ import { Guess } from 'wordlebuddy-shared';
 import { GuessInputButtonComponent } from '../../components/guess-input-button/guess-input-button.component';
 import { ListComponent } from '../../components/list/list.component';
 import { WordList } from '../../model/word-list/word-list';
+import { HelpfulComponent } from '../../components/helpful/helpful.component';
 
 @Component({
   selector: 'app-home',
-  imports: [GuessBoardComponent, GuessInputButtonComponent, ListComponent],
+  imports: [
+    GuessBoardComponent,
+    GuessInputButtonComponent,
+    ListComponent,
+    HelpfulComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

@@ -21,7 +21,10 @@
       [possibleAnswers]="wordList.possibleAnswers"
     />
     } @else {
-    <p>Helpful</p>
+    <app-helpful
+      [letters]="wordList.helpfulLetters"
+      [words]="wordList.helpfulWords.slice(0, 5)"
+    />
     }
   </div>
 </div>

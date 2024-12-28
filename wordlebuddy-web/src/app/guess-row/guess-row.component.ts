@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Guess } from 'wordlebuddy-shared';
+import { Colors, Guess } from 'wordlebuddy-shared';
 
 @Component({
   selector: 'app-guess-row',
@@ -11,6 +11,6 @@ export class GuessRowComponent {
   @Input() guess: Guess = new Guess('tales', 'bbbbb');
 
   getColor(colorCode: string): string {
-    return Guess.getColorHex(colorCode);
+    return Colors.get(colorCode).hex;
   }
 }

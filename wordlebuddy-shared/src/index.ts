@@ -1,4 +1,6 @@
-export { Colors } from "./model/Color";
-export { Filter } from "./model/Filter";
-export { Guess } from "./model/Guess";
-export { WordList } from "./model/WordList";
+export { Colors } from "./model/domain/Color";
+export { Filter } from "./model/domain/Filter";
+export { Guess } from "./model/domain/Guess";
+
+export { getPossibleAnswers } from "./resources/PossibleAnswers";
+export { getPossibleGuesses } from "./resources/PossibleGuesses";

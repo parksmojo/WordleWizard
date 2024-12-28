@@ -1,8 +1,10 @@
-import { getPossibleAnswers } from "../resources/PossibleAnswers";
-import { getPossibleGuesses } from "../resources/PossibleGuesses";
-import { Colors } from "./Color";
-import { Filter } from "./Filter";
-import { Guess } from "./Guess";
+import {
+  Colors,
+  Filter,
+  getPossibleAnswers,
+  getPossibleGuesses,
+  Guess,
+} from 'wordlebuddy-shared';
 
 export class WordList {
   // Raw lists
@@ -64,11 +66,16 @@ export class WordList {
 
   private addFilters(filters: Filter[]): void {
     for (let filter of filters) {
-      const existingIndex = this._filters.findIndex((char) => char.character === filter.character);
+      const existingIndex = this._filters.findIndex(
+        (char) => char.character === filter.character
+      );
       if (existingIndex >= 0) {
         if (this._filters[existingIndex].color == Colors.green) {
           continue;
-        } else if (this._filters[existingIndex].color == Colors.yellow && filter.color === Colors.green) {
+        } else if (
+          this._filters[existingIndex].color == Colors.yellow &&
+          filter.color === Colors.green
+        ) {
           this._filters[existingIndex] = filter;
         }
       } else {
@@ -91,22 +98,35 @@ export class WordList {
   }
 
   private findHelpfulLetters(numLetters?: number): string[] {
-    const checkedLetters = new Set(this._filters.map((filter) => filter.character));
+    const checkedLetters = new Set(
+      this._filters.map((filter) => filter.character)
+    );
     const letterCounts = new Map();
     for (let word of this._possibleAnswers) {
-      const letterArray = word.split("");
-      const filteredArray = letterArray.filter((letter) => !checkedLetters.has(letter));
+      const letterArray = word.split('');
+      const filteredArray = letterArray.filter(
+        (letter) => !checkedLetters.has(letter)
+      );
       const letters = new Set(filteredArray);
       for (let letter of letters) {
-        letterCounts.set(letter, letterCounts.get(letter) ? letterCounts.get(letter) + 1 : 1);
+        letterCounts.set(
+          letter,
+          letterCounts.get(letter) ? letterCounts.get(letter) + 1 : 1
+        );
       }
     }
-    const sortedArray = Array.from(letterCounts.entries()).sort(([, countA], [, countB]) => countB - countA);
-    return sortedArray.slice(0, numLetters ?? 5).map(([letter, count]) => letter);
+    const sortedArray = Array.from(letterCounts.entries()).sort(
+      ([, countA], [, countB]) => countB - countA
+    );
+    return sortedArray
+      .slice(0, numLetters ?? 5)
+      .map(([letter, count]) => letter);
   }
 
   private findHelpfulWords(): string[] {
-    const filters = this._helpfulLetters.map((letter) => new Filter(letter, 0, Colors.orange));
+    const filters = this._helpfulLetters.map(
+      (letter) => new Filter(letter, 0, Colors.orange)
+    );
     const allWords = [];
     for (let i = 0; i < this._helpfulLetters.length; i++) {
       allWords.push(...this.applyFiltersTo(this._allPossibleGuesses, filters));

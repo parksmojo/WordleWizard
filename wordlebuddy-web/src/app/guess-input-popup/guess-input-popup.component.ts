@@ -6,10 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Guess } from 'wordlebuddy-shared';
+import { ColorPickerComponent } from '../color-picker/color-picker.component';
 
 @Component({
   selector: 'app-guess-input-popup',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ColorPickerComponent],
   templateUrl: './guess-input-popup.component.html',
   styleUrl: './guess-input-popup.component.css',
 })

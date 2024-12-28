@@ -1,0 +1,11 @@
+<div class="row">
+  @for (color of colors; track $index){
+  <div
+    class="tile"
+    [style]="{ 'background-color': getColor(colors[$index]) }"
+    (click)="nextColor($index)"
+  >
+    {{ word[$index] }}
+  </div>
+  }
+</div>

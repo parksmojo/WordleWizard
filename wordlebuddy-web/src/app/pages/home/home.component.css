@@ -1,4 +1,4 @@
-button {
+.reset {
   width: fit-content;
   padding-left: 20px;
   padding-right: 20px;
@@ -8,7 +8,12 @@ button {
   font-size: 1em;
   line-height: 2em;
   color: white;
-  margin-left: 25%;
+}
+
+.game-over {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .below {

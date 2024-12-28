@@ -15,6 +15,7 @@ export class HomeComponent {
   guesses: Guess[] = [];
   foundAnswer: boolean = false;
   wordList: WordList = new WordList();
+  activeTab: string = 'all';
 
   addGuess(guess: Guess) {
     this.guesses.push(guess);

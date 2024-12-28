@@ -1,14 +1,27 @@
 <div class="main">
   <app-guess-board [guesses]="guesses" />
+
   @if(guesses.length < 6 && !foundAnswer){
   <app-guess-input-button (newGuess)="addGuess($event)" />
   } @else {
-  <button (click)="resetGame()">Reset Game</button>
+  <div class="game-over">
+    <button class="reset" (click)="resetGame()">Reset Game</button>
+  </div>
   }
+
   <div class="below">
+    <div class="tab-container">
+      <button class="tab" (click)="activeTab = 'all'">All</button>
+      <button class="tab" (click)="activeTab = 'help'">Helpful</button>
+    </div>
+
+    @if(activeTab === 'all'){
     <app-list
       [possibleGuesses]="wordList.possibleGuesses"
       [possibleAnswers]="wordList.possibleAnswers"
     />
+    } @else {
+    <p>Helpful</p>
+    }
   </div>
 </div>

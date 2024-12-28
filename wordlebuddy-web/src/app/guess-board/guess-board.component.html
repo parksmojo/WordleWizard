@@ -1,5 +1,7 @@
 <div class="guess-board">
   @for (guess of guesses; track guess.word) {
   <app-guess-row [guess]="guess" />
+  } @empty {
+  <div class="no-guesses">No guesses yet</div>
   }
 </div>

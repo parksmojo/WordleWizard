@@ -10,7 +10,7 @@ import { GuessInputButtonComponent } from '../guess-input-button/guess-input-but
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  guesses = [new Guess('empty', 'bbbbb')];
+  guesses: Guess[] = [];
 
   addGuess(guess: Guess) {
     this.guesses.push(guess);

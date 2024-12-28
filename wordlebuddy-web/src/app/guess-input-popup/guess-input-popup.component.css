@@ -21,6 +21,12 @@
   z-index: 1000;
 }
 
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
 h2 {
   margin-top: 0;
 }

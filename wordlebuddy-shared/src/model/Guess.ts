@@ -2,9 +2,22 @@ export class Guess {
   private _word: string;
   private _colors: string;
   private _score: number;
+
   private wordFormat = /^[a-z]{5}$/i;
   private colorFormat = /^[bgy]{5}$/i;
   private answerFormat = /^[g]{5}$/i;
+
+  private static colorMap: { [key: string]: string } = {
+    b: "#3a3a3c",
+    y: "#b59f3b",
+    g: "#538d4e",
+  };
+
+  private static colorOrder: { [key: string]: string } = {
+    b: "y",
+    y: "g",
+    g: "b",
+  };
 
   constructor(guess: string, colors: string) {
     if (!this.wordFormat.test(guess)) {
@@ -47,5 +60,13 @@ export class Guess {
 
   public get score() {
     return this._score;
+  }
+
+  public static getColorHex(colorCode: string): string {
+    return this.colorMap[colorCode] || "red";
+  }
+
+  public static nextColor(colorCode: string): string {
+    return this.colorOrder[colorCode] || "red";
   }
 }

@@ -12,6 +12,6 @@
   "keywords": [],
   "author": "Parker Shumard",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "description": ""
 }

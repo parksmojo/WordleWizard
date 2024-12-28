@@ -1,3 +1,6 @@
+import { Colors } from "./Color";
+import { Filter } from "./Filter";
+
 export class Guess {
   private _word: string;
   private _colors: string;
@@ -6,18 +9,6 @@ export class Guess {
   private wordFormat = /^[a-z]{5}$/i;
   private colorFormat = /^[bgy]{5}$/i;
   private answerFormat = /^[g]{5}$/i;
-
-  private static colorMap: { [key: string]: string } = {
-    b: "#3a3a3c",
-    y: "#b59f3b",
-    g: "#538d4e",
-  };
-
-  private static colorOrder: { [key: string]: string } = {
-    b: "y",
-    y: "g",
-    g: "b",
-  };
 
   constructor(guess: string, colors: string) {
     if (!this.wordFormat.test(guess)) {
@@ -35,10 +26,10 @@ export class Guess {
     let score = 0;
     for (let color of colors.split("")) {
       switch (color) {
-        case "y":
+        case Colors.yellow:
           score += 1;
           break;
-        case "g":
+        case Colors.green:
           score += 2;
           break;
       }
@@ -60,13 +51,5 @@ export class Guess {
 
   public get score() {
     return this._score;
-  }
-
-  public static getColorHex(colorCode: string): string {
-    return this.colorMap[colorCode] || "red";
-  }
-
-  public static nextColor(colorCode: string): string {
-    return this.colorOrder[colorCode] || "red";
   }
 }

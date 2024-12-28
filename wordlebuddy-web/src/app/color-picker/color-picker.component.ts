@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Guess } from 'wordlebuddy-shared';
+import { Colors, Guess } from 'wordlebuddy-shared';
 
 @Component({
   selector: 'app-color-picker',
@@ -13,11 +13,11 @@ export class ColorPickerComponent {
   colors = ['b', 'b', 'b', 'b', 'b'];
 
   getColor(colorCode: string): string {
-    return Guess.getColorHex(colorCode);
+    return Colors.get(colorCode).hex;
   }
 
   nextColor(index: number): void {
-    this.colors[index] = Guess.nextColor(this.colors[index]);
+    this.colors[index] = Colors.get(this.colors[index]).next;
     this.submitColors();
   }
 

@@ -6,6 +6,7 @@
   </div>
   <form [formGroup]="guessForm">
     <app-color-picker
+      id="color-picker"
       [word]="guessForm.value.word!"
       (colorString)="setColors($event)"
     />

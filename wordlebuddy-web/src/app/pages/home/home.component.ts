@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { GuessBoardComponent } from '../guess-board/guess-board.component';
+import { GuessBoardComponent } from '../../components/guess-board/guess-board.component';
 import { Guess } from 'wordlebuddy-shared';
-import { GuessInputButtonComponent } from '../guess-input-button/guess-input-button.component';
+import { GuessInputButtonComponent } from '../../components/guess-input-button/guess-input-button.component';
 
 @Component({
   selector: 'app-home',

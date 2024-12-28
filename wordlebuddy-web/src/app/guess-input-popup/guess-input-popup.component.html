@@ -10,7 +10,7 @@
       [word]="guessForm.value.word!"
       (colorString)="setColors($event)"
     />
-    <input formControlName="word" placeholder="Enter word" />
+    <input #textInput formControlName="word" placeholder="Enter word" />
     <button type="submit" (click)="submitGuess()" [disabled]="!guessForm.valid">
       Submit
     </button>

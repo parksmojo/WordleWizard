@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -15,6 +21,7 @@ import { ColorPickerComponent } from '../color-picker/color-picker.component';
   styleUrl: './guess-input-popup.component.css',
 })
 export class GuessInputPopupComponent {
+  @ViewChild('textInput') inputElement!: ElementRef;
   @Output() close = new EventEmitter<void>();
   @Output() guess = new EventEmitter<Guess>();
   colors = 'bbbbb';
@@ -25,6 +32,10 @@ export class GuessInputPopupComponent {
       Validators.pattern(/^[a-z]{5}$/i),
     ]),
   });
+
+  ngAfterViewInit() {
+    this.inputElement.nativeElement.focus();
+  }
 
   setColors(colorString: string) {
     this.colors = colorString;

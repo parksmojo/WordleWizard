@@ -24,7 +24,7 @@ export class Filter {
     return this._position;
   }
 
-  public filter(word: string): boolean {
+  public matches(word: string): boolean {
     return Colors.get(this._color).filterMethod(word, this._character, this._position);
   }
 

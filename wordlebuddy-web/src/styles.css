@@ -4,10 +4,9 @@ body {
   background-color: #121213;
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: bold;
 }
 
 .main {
   justify-self: center;
-  width: 90%;
+  width: 100%;
 }

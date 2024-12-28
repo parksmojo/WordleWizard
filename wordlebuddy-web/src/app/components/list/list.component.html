@@ -1,0 +1,13 @@
+<p>List of words</p>
+<label>
+  <input type="checkbox" [(ngModel)]="showAnswers" />
+  Limit to possible answers
+</label>
+<p>From {{ list[0] }} to {{ list.at(-1) }}</p>
+<ul>
+  @for(word of list; track $index){
+  <li>{{ word }}</li>
+  }@empty {
+  <li>Nothing to show</li>
+  }
+</ul>

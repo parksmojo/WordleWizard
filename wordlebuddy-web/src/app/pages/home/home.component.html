@@ -5,4 +5,10 @@
   } @else {
   <button (click)="resetGame()">Reset Game</button>
   }
+  <div class="below">
+    <app-list
+      [possibleGuesses]="wordList.possibleGuesses"
+      [possibleAnswers]="wordList.possibleAnswers"
+    />
+  </div>
 </div>

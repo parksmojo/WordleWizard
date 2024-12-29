@@ -1,0 +1,30 @@
+.letter-list {
+  display: flex;
+  justify-content: space-around;
+  justify-self: center;
+  width: 90%;
+  margin: 10px;
+}
+
+.word-list {
+  display: grid;
+  gap: 8px;
+  justify-content: center;
+}
+
+.word {
+  display: flex;
+  gap: 5px;
+  padding: 3px;
+  border: #3a3a3c 1px solid;
+}
+
+.letter {
+  text-align: center;
+  align-content: center;
+  width: 2em;
+  height: 2em;
+  font-size: 30px;
+  text-transform: uppercase;
+  background-color: #3a3a3c;
+}

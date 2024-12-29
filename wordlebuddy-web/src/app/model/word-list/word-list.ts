@@ -11,33 +11,29 @@ export class WordList {
   private _allPossibleGuesses: string[];
   private _allPossibleAnswers: string[];
 
+  // Filters
+  private _filters: Filter[] = [];
+
   // Filtered lists
-  private _possibleGuesses: string[];
-  private _possibleAnswers: string[];
+  private _possibleGuesses: string[] = [];
+  private _possibleAnswers: string[] = [];
 
   // Helpful info
-  private _helpfulWords: string[];
-  private _helpfulLetters: string[];
-
-  // Filters
-  private _filters: Filter[];
+  private _helpfulLetters: string[] = [];
+  private _helpfulWords: string[] = [];
 
   constructor() {
     this._allPossibleGuesses = getPossibleGuesses();
     this._allPossibleAnswers = getPossibleAnswers();
-    this._possibleGuesses = this._allPossibleGuesses;
-    this._possibleAnswers = this._allPossibleAnswers;
-    this._helpfulWords = [];
-    this._helpfulLetters = [];
-    this._filters = [];
+    this.reset();
   }
 
   public reset() {
-    this._possibleGuesses = this._allPossibleGuesses;
-    this._possibleAnswers = this._allPossibleAnswers;
-    this._helpfulWords = [];
-    this._helpfulLetters = [];
     this._filters = [];
+    this._possibleGuesses = [...this._allPossibleGuesses];
+    this._possibleAnswers = [...this._allPossibleAnswers];
+    this._helpfulLetters = this.findHelpfulLetters();
+    this._helpfulWords = this.findHelpfulWords();
   }
 
   get possibleGuesses(): string[] {
@@ -98,6 +94,7 @@ export class WordList {
   }
 
   private findHelpfulLetters(numLetters?: number): string[] {
+    numLetters ??= 5;
     const checkedLetters = new Set(
       this._filters.map((filter) => filter.character)
     );
@@ -118,21 +115,20 @@ export class WordList {
     const sortedArray = Array.from(letterCounts.entries()).sort(
       ([, countA], [, countB]) => countB - countA
     );
-    return sortedArray
-      .slice(0, numLetters ?? 5)
-      .map(([letter, count]) => letter);
+    return sortedArray.slice(0, numLetters).map(([letter, count]) => letter);
   }
 
-  private findHelpfulWords(): string[] {
+  private findHelpfulWords(numWords?: number): string[] {
+    numWords ??= 15;
     const filters = this._helpfulLetters.map(
       (letter) => new Filter(letter, 0, Colors.orange)
     );
     const allWords = [];
-    for (let i = 0; i < this._helpfulLetters.length; i++) {
+    while (allWords.length < numWords && filters.length > 0) {
       allWords.push(...this.applyFiltersTo(this._allPossibleGuesses, filters));
       filters.pop();
     }
     const uniqueWords = new Set<string>(allWords);
-    return Array.from(uniqueWords);
+    return Array.from(uniqueWords).slice(0, numWords);
   }
 }

@@ -4,9 +4,9 @@
   Limit to possible answers
 </label>
 <p>From {{ list[0] }} to {{ list.at(-1) }}</p>
-<ul>
+<ul class="column">
   @for(word of list; track $index){
-  <li>{{ word }}</li>
+  <li class="word">{{ word }}</li>
   }@empty {
   <li>Nothing to show</li>
   }

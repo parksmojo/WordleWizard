@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
 import { Guess } from 'wordlebuddy-shared';
 
@@ -9,6 +9,7 @@ import { Guess } from 'wordlebuddy-shared';
   styleUrl: './guess-input-button.component.css',
 })
 export class GuessInputButtonComponent {
+  @Input() presetGuess = '';
   @Output() newGuess = new EventEmitter<Guess>();
   showPopup = false;
 

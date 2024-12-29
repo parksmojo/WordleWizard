@@ -1,5 +1,9 @@
 @if (showPopup) {
-<app-guess-input-popup (close)="closePopup()" (guess)="submitGuess($event)" />
+<app-guess-input-popup
+  (close)="closePopup()"
+  (guess)="submitGuess($event)"
+  [presetGuess]="presetGuess"
+/>
 }
 
 <div class="input-button">

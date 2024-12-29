@@ -51,4 +51,8 @@ export class GuessInputPopupComponent {
   closePopup() {
     this.close.emit();
   }
+
+  foundAnswer() {
+    this.colors = 'ggggg';
+  }
 }

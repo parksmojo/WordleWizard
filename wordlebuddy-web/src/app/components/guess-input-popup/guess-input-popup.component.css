@@ -38,7 +38,7 @@ form {
   align-items: center;
 }
 
-button {
+.submit-guess {
   width: fit-content;
   padding-left: 20px;
   padding-right: 20px;
@@ -48,6 +48,18 @@ button {
   font-size: 1em;
   line-height: 2em;
   color: #333;
+}
+
+.fill-answer {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  background-color: #58a351;
+  border-radius: 20px;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: white;
 }
 
 button:disabled {

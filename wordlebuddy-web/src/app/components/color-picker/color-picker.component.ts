@@ -10,7 +10,7 @@ import { Colors, Guess } from 'wordlebuddy-shared';
 export class ColorPickerComponent {
   @Input() word: string = '';
   @Output() colorString = new EventEmitter<string>();
-  colors = ['b', 'b', 'b', 'b', 'b'];
+  @Input() colors = ['b', 'b', 'b', 'b', 'b'];
 
   getColor(colorCode: string): string {
     return Colors.get(colorCode).hex;

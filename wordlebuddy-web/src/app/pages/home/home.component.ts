@@ -5,6 +5,7 @@ import { GuessInputButtonComponent } from '../../components/guess-input-button/g
 import { ListComponent } from '../../components/list/list.component';
 import { WordList } from '../../model/word-list/word-list';
 import { HelpfulComponent } from '../../components/helpful/helpful.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { HelpfulComponent } from '../../components/helpful/helpful.component';
     GuessInputButtonComponent,
     ListComponent,
     HelpfulComponent,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

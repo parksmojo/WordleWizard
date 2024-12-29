@@ -1,13 +1,26 @@
-<p>List of words</p>
-<label>
-  <input type="checkbox" [(ngModel)]="showAnswers" />
-  Limit to possible answers
-</label>
-<p>From {{ list[0] }} to {{ list.at(-1) }}</p>
-<ul class="column">
-  @for(word of list; track $index){
-  <li class="word">{{ word }}</li>
-  }@empty {
-  <li>Nothing to show</li>
+<div class="list-page-header">
+  <div>
+    <h3>Potential Guesses</h3>
+    <p>
+      Found {{ list.length }} words from {{ list[0].toUpperCase() }} to
+      {{ list.at(-1)!.toUpperCase() }}
+    </p>
+  </div>
+
+  <label class="show-answers">
+    <input type="checkbox" [(ngModel)]="showAnswers" />
+    Hide<br />nonsense
+  </label>
+</div>
+
+<div class="word-list">
+  @for(word of list.slice(0,200); track word){
+  <div class="word">
+    @for(letter of word; track $index){
+    <div class="letter">{{ letter }}</div>
+    }
+  </div>
+  } @empty {
+  <p>No words found</p>
   }
-</ul>
+</div>

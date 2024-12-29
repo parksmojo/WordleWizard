@@ -29,8 +29,6 @@ export class ListComponent {
   }
 
   private updateList(): void {
-    this.list = (
-      this._showAnswers ? this.possibleAnswers : this.possibleGuesses
-    ).slice(0, 100);
+    this.list = this._showAnswers ? this.possibleAnswers : this.possibleGuesses; //.slice(0, 100);
   }
 }

@@ -34,5 +34,6 @@ export class HomeComponent {
   resetGame() {
     this.guesses = [];
     this.foundAnswer = false;
+    this.wordList.reset();
   }
 }

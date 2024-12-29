@@ -11,8 +11,18 @@
 
   <div class="below">
     <div class="tab-container">
-      <button class="tab" (click)="activeTab = 'all'">All</button>
-      <button class="tab" (click)="activeTab = 'help'">Helpful</button>
+      <button
+        [class]="activeTab === 'all' ? 'tab active' : 'tab'"
+        (click)="activeTab = 'all'"
+      >
+        All Words
+      </button>
+      <button
+        [class]="activeTab === 'help' ? 'tab active' : 'tab'"
+        (click)="activeTab = 'help'"
+      >
+        Helpful Guesses
+      </button>
     </div>
 
     @if(activeTab === 'all'){

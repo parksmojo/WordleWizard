@@ -20,3 +20,18 @@
   margin-top: 10%;
   border-top: white 1px solid;
 }
+
+.tab {
+  width: 50%;
+  font-size: 1em;
+  line-height: 1.7em;
+  border: none;
+  background-color: black;
+  color: gray;
+  cursor: pointer;
+}
+.active {
+  background-color: #121213;
+  color: white;
+  cursor: default;
+}

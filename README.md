@@ -1,1 +1,1 @@
-# Wordle Buddy
+# Wordle Wizard

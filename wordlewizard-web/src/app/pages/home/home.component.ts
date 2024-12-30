@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GuessBoardComponent } from '../../components/guess-board/guess-board.component';
-import { Guess } from 'wordlebuddy-shared';
+import { Guess } from 'wordlewizard-shared';
 import { GuessInputButtonComponent } from '../../components/guess-input-button/guess-input-button.component';
 import { ListComponent } from '../../components/list/list.component';
 import { WordList } from '../../model/word-list/word-list';

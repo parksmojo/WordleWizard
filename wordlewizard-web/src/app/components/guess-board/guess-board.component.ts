@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GuessRowComponent } from '../guess-row/guess-row.component';
-import { Guess } from 'wordlebuddy-shared';
+import { Guess } from 'wordlewizard-shared';
 
 @Component({
   selector: 'app-guess-board',

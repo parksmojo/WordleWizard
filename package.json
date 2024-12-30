@@ -1,24 +1,24 @@
 {
-  "name": "wordlebuddy",
+  "name": "wordlewizard",
   "version": "1.0.0",
   "workspaces": [
-    "wordlebuddy-web",
-    "wordlebuddy-shared"
+    "wordlewizard-web",
+    "wordlewizard-shared"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "cd wordlebuddy-shared && npm run compile && cd ../wordlebuddy-web && npm run build"
+    "compile": "cd wordlewizard-shared && npm run compile && cd ../wordlewizard-web && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parksmojo/WordleBuddy.git"
+    "url": "git+https://github.com/parksmojo/WordleWizard.git"
   },
   "keywords": [],
   "author": "Parker Shumard",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/parksmojo/WordleBuddy/issues"
+    "url": "https://github.com/parksmojo/WordleWizard/issues"
   },
   "description": ""
 }

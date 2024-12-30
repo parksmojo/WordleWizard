@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
-import { Guess } from 'wordlebuddy-shared';
+import { Guess } from 'wordlewizard-shared';
 
 @Component({
   selector: 'app-guess-input-button',

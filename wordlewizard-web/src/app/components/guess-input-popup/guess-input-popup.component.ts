@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Guess } from 'wordlebuddy-shared';
+import { Guess } from 'wordlewizard-shared';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 
 @Component({

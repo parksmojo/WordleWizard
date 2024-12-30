@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Colors, Guess } from 'wordlebuddy-shared';
+import { Colors, Guess } from 'wordlewizard-shared';
 
 @Component({
   selector: 'app-guess-row',

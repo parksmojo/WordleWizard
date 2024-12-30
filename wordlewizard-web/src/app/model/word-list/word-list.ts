@@ -4,7 +4,7 @@ import {
   getPossibleAnswers,
   getPossibleGuesses,
   Guess,
-} from 'wordlebuddy-shared';
+} from 'wordlewizard-shared';
 
 export class WordList {
   // Raw lists

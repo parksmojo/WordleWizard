@@ -5,9 +5,9 @@
 
 .guess-tile {
   background-color: #3a3a3c;
-  width: 15vw;
-  height: 15vw;
-  line-height: 15vw;
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.2em;
   text-align: center;
   font-size: 30px;
   text-transform: uppercase;

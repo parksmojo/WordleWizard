@@ -2,6 +2,6 @@
   display: grid;
   justify-items: center;
   gap: 5px;
-  padding: 20px;
+  padding: 20px 0;
   font-weight: bold;
 }

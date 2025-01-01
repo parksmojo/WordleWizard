@@ -1,15 +1,17 @@
 <app-header />
 
 <div class="main">
-  <app-guess-board [guesses]="guesses" />
+  <div class="above">
+    <app-guess-board [guesses]="guesses" />
 
-  @if(guesses.length < 6 && !foundAnswer){
-  <app-guess-input-button (newGuess)="addGuess($event)" />
-  } @else {
-  <div class="game-over">
-    <button class="reset" (click)="resetGame()">Reset Game</button>
+    @if(guesses.length < 6 && !foundAnswer){
+    <app-guess-input-button (newGuess)="addGuess($event)" />
+    } @else {
+    <div class="game-over">
+      <button class="reset" (click)="resetGame()">Reset Game</button>
+    </div>
+    }
   </div>
-  }
 
   <div class="below">
     <div class="tab-container">

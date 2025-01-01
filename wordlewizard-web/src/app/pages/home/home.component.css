@@ -1,3 +1,7 @@
+.main {
+  display: grid;
+}
+
 .reset {
   width: fit-content;
   padding-left: 20px;

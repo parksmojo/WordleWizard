@@ -12,3 +12,7 @@ body {
   width: 100%;
   max-width: 50vh;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

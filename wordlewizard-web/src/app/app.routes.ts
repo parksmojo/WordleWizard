@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Wordle Wizard' },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: HomeComponent },
+  { path: 'about', component: AboutComponent, title: 'Wordle Wizard' },
+  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: '**', component: AboutComponent },
 ];

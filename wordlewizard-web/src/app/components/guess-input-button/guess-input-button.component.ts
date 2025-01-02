@@ -15,10 +15,12 @@ export class GuessInputButtonComponent {
 
   openPopup() {
     this.showPopup = true;
+    document.body.classList.add('no-scroll');
   }
 
   closePopup() {
     this.showPopup = false;
+    document.body.classList.remove('no-scroll');
   }
 
   submitGuess(newGuess: Guess) {

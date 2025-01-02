@@ -27,4 +27,5 @@
   font-size: 30px;
   text-transform: uppercase;
   background-color: #3a3a3c;
+  user-select: none;
 }

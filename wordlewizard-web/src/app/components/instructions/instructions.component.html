@@ -1,0 +1,28 @@
+<div class="trigger" (click)="openPopup()">?</div>
+@if(showInstructions){
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-container">
+  <div class="popup-header">
+    <h2>How to use</h2>
+    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+  </div>
+  <ol class="content">
+    <li>Tap "Add guess"</li>
+    <li>Enter the guess you used in your Wordle game</li>
+    <li>Tap on the squares to change their color</li>
+    <li>Tap "Submit"</li>
+    <li>Repeat for each guess</li>
+  </ol>
+  <ul class="content">
+    <li>The "All Words" tab shows all possible answers that you can guess.</li>
+    <li>
+      Check the "Hide nonsense" box to limit the results to only Wordle answers
+    </li>
+    <li>
+      The "Helpful Guesses" tab shows the five most common letters in the
+      potential answers, along with the words that contain them.
+    </li>
+  </ul>
+</div>
+
+}

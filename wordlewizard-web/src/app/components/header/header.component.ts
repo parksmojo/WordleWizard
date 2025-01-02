@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { InstructionsComponent } from '../instructions/instructions.component';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [InstructionsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

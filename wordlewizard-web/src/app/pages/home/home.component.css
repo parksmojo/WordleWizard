@@ -20,6 +20,11 @@
   justify-content: center;
 }
 
+.above {
+  min-height: 30vh;
+  align-content: center;
+}
+
 .below {
   margin-top: 10%;
 }

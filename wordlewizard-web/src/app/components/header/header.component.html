@@ -1,23 +1,7 @@
 <div class="page-header">
-  @if(showMenu){
-  <div class="hamburger" (click)="closeMenu()">X</div>
-  }@else {
-  <div class="hamburger" (click)="openMenu()">Menu</div>
-  }
-
-  <div class="page-title" (click)="route.navigate(['/'])">WordleWizard</div>
-
-  <div class="acct">Account</div>
+  <div class="left-side">
+    <div class="back" (click)="route.navigate(['/'])"><</div>
+    <div class="page-title">WordleWizard</div>
+  </div>
+  <div class="right-side"></div>
 </div>
-
-@if(showMenu){
-<div class="menu-overlay" (click)="closeMenu()"></div>
-<div class="menu-container">
-  <h3>WordleWizard</h3>
-
-  <ul class="links">
-    <li class="link home" (click)="goHome()">Home</li>
-    <li class="link about" (click)="goAbout()">How to use</li>
-  </ul>
-</div>
-}

@@ -10,7 +10,7 @@ body {
 .main {
   justify-self: center;
   width: 100%;
-  max-width: 50vh;
+  max-width: 60vh;
 }
 
 .no-scroll {

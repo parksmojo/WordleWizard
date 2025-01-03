@@ -25,6 +25,6 @@ export class GuessInputButtonComponent {
 
   submitGuess(newGuess: Guess) {
     this.newGuess.emit(newGuess);
-    this.showPopup = false;
+    this.closePopup();
   }
 }

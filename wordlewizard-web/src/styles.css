@@ -16,3 +16,7 @@ body {
 .no-scroll {
   overflow: hidden;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

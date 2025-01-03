@@ -36,8 +36,11 @@ export class GuessInputPopupComponent {
   });
 
   ngAfterViewInit() {
-    this.inputElement.nativeElement.value = this.presetGuess;
-    this.inputElement.nativeElement.focus();
+    if (this.presetGuess === '') {
+      this.inputElement.nativeElement.focus();
+    } else {
+      this.guessForm.get('word')?.setValue(this.presetGuess);
+    }
   }
 
   setColors(colorString: string) {

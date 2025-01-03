@@ -1,3 +1,11 @@
+@if (showPopup) {
+<app-guess-input-popup
+  (close)="closePopup()"
+  (guess)="submitGuess($event)"
+  [presetGuess]="presetGuess"
+/>
+}
+
 <div class="list-page-header">
   <div>
     <h3>Potential Guesses</h3>
@@ -15,7 +23,7 @@
 
 <div class="word-list">
   @for(word of list.slice(0,200); track word){
-  <div class="word">
+  <div class="word" (click)="pickGuess(word)">
     @for(letter of word; track $index){
     <div class="letter">{{ letter }}</div>
     }

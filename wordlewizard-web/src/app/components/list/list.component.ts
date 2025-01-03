@@ -1,15 +1,24 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
+import { Guess } from 'wordlewizard-shared';
 
 @Component({
   selector: 'app-list',
-  imports: [FormsModule],
+  imports: [FormsModule, GuessInputPopupComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
   @Input() possibleGuesses: string[] = [];
   @Input() possibleAnswers: string[] = [];
+  presetGuess = '';
 
   private _showAnswers: boolean = false;
   list: string[] = [];
@@ -30,5 +39,28 @@ export class ListComponent {
 
   private updateList(): void {
     this.list = this._showAnswers ? this.possibleAnswers : this.possibleGuesses; //.slice(0, 100);
+  }
+
+  pickGuess(word: string) {
+    this.presetGuess = word;
+    this.openPopup();
+  }
+
+  @Output() newGuess = new EventEmitter<Guess>();
+  showPopup = false;
+
+  openPopup() {
+    this.showPopup = true;
+    document.body.classList.add('no-scroll');
+  }
+
+  closePopup() {
+    this.showPopup = false;
+    document.body.classList.remove('no-scroll');
+  }
+
+  submitGuess(newGuess: Guess) {
+    this.newGuess.emit(newGuess);
+    this.closePopup();
   }
 }

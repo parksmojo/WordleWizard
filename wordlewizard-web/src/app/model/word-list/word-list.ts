@@ -66,13 +66,12 @@ export class WordList {
         (char) => char.character === filter.character
       );
       if (existingIndex >= 0) {
-        if (this._filters[existingIndex].color == Colors.green) {
-          continue;
-        } else if (
-          this._filters[existingIndex].color == Colors.yellow &&
-          filter.color === Colors.green
-        ) {
-          this._filters[existingIndex] = filter;
+        if (this._filters[existingIndex].color == Colors.yellow) {
+          if (filter.color === Colors.green) {
+            this._filters[existingIndex] = filter;
+          } else if (filter.color === Colors.yellow) {
+            this._filters.push(filter);
+          }
         }
       } else {
         this._filters.push(filter);

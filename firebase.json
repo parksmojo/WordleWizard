@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./wordlewizard-web/dist/wordlewizard-web/browser",
+    "public": "./wordlewizard/dist/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

@@ -1,3 +1,9 @@
+.page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .main {
   display: grid;
 }
@@ -45,4 +51,18 @@
   border-top: #3a3a3c 2px solid;
   border-left: #3a3a3c 1px solid;
   border-right: #3a3a3c 1px solid;
+}
+
+@media (min-width: 768px) {
+  .page {
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+  }
+  .above {
+    height: 100vh;
+  }
+  .below {
+    margin-top: 0px;
+  }
 }

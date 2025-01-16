@@ -1,5 +1,5 @@
-import { Colors } from "./Color";
-import { Guess } from "./Guess";
+import { Colors } from '../colors/colors';
+import { Guess } from '../guess/guess';
 
 export class Filter {
   private _character: string;
@@ -25,7 +25,11 @@ export class Filter {
   }
 
   public matches(word: string): boolean {
-    return Colors.get(this._color).filterMethod(word, this._character, this._position);
+    return Colors.get(this._color).filterMethod(
+      word,
+      this._character,
+      this._position
+    );
   }
 
   public static fromGuess(guess: Guess): Filter[] {

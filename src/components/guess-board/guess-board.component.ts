@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GuessRowComponent } from '../guess-row/guess-row.component';
-import { Guess } from '../../model/domain/Guess';
+import { Guess } from '../../model/guess/guess';
 
 @Component({
   selector: 'app-guess-board',

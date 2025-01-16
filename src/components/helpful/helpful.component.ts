@@ -1,15 +1,23 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Guess } from '../../model/guess/guess';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
-import { Guess } from '../../model/domain/Guess';
 
 @Component({
-  selector: 'app-guess-input-button',
+  selector: 'app-helpful',
   imports: [GuessInputPopupComponent],
-  templateUrl: './guess-input-button.component.html',
-  styleUrl: './guess-input-button.component.css',
+  templateUrl: './helpful.component.html',
+  styleUrl: './helpful.component.css',
 })
-export class GuessInputButtonComponent {
-  @Input() presetGuess = '';
+export class HelpfulComponent {
+  @Input() words: string[] = [];
+  @Input() letters: string[] = [];
+  presetGuess = '';
+
+  pickGuess(word: string) {
+    this.presetGuess = word;
+    this.openPopup();
+  }
+
   @Output() newGuess = new EventEmitter<Guess>();
   showPopup = false;
 

@@ -1,5 +1,5 @@
-import { Colors } from "./Color";
-import { Filter } from "./Filter";
+import { Colors } from '../colors/colors';
+import { Filter } from '../filter/filter';
 
 export class Guess {
   private _word: string;
@@ -12,19 +12,21 @@ export class Guess {
 
   constructor(guess: string, colors: string) {
     if (!this.wordFormat.test(guess)) {
-      throw new Error("Guess input of wrong length");
+      throw new Error('Guess input of wrong length');
     }
     if (!this.colorFormat.test(colors)) {
-      throw new Error("Colors input incorrectly");
+      throw new Error('Colors input incorrectly');
     }
     this._word = guess.toLowerCase();
     this._colors = colors.toLowerCase();
-    this._score = this.answerFormat.test(colors) ? -1 : this.calcScore(this._colors);
+    this._score = this.answerFormat.test(colors)
+      ? -1
+      : this.calcScore(this._colors);
   }
 
   private calcScore(colors: string) {
     let score = 0;
-    for (let color of colors.split("")) {
+    for (let color of colors.split('')) {
       switch (color) {
         case Colors.yellow:
           score += 1;
@@ -42,11 +44,11 @@ export class Guess {
   }
 
   public get letters() {
-    return this._word.split("");
+    return this._word.split('');
   }
 
   public get colors() {
-    return this._colors.split("");
+    return this._colors.split('');
   }
 
   public get score() {

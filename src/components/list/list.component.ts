@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
-import { Guess } from '../../model/domain/Guess';
+import { Guess } from '../../model/guess/guess';
 
 @Component({
   selector: 'app-list',

@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Guess } from '../../model/domain/Guess';
+import { Guess } from '../../model/guess/guess';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 
 @Component({

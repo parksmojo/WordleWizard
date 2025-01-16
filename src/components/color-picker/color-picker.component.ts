@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Colors } from '../../model/domain/Color';
-import { Guess } from '../../model/domain/Guess';
+import { Colors } from '../../model/colors/colors';
+import { Guess } from '../../model/guess/guess';
 
 @Component({
   selector: 'app-color-picker',

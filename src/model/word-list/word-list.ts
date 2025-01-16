@@ -1,8 +1,8 @@
-import { getPossibleAnswers } from '../../resources/PossibleAnswers';
-import { getPossibleGuesses } from '../../resources/PossibleGuesses';
-import { Colors } from '../domain/Color';
-import { Filter } from '../domain/Filter';
-import { Guess } from '../domain/Guess';
+import { getPossibleAnswers } from '../../../resources/PossibleAnswers';
+import { getPossibleGuesses } from '../../../resources/PossibleGuesses';
+import { Colors } from '../colors/colors';
+import { Filter } from '../filter/filter';
+import { Guess } from '../guess/guess';
 
 export class WordList {
   // Raw lists

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Guess } from '../../model/domain/Guess';
-import { Colors } from '../../model/domain/Color';
+import { Guess } from '../../model/guess/guess';
+import { Colors } from '../../model/colors/colors';
 
 @Component({
   selector: 'app-guess-row',

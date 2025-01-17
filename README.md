@@ -4,4 +4,4 @@ Do you have trouble thinking of words to guess while playing the hit NYT game Wo
 
 Wordle Wizard is an application where you can input your Wordle guesses as you make them, and the Wizard will tell you all of the words that the answer could be, along with some helpful guesses to weed out common letters.
 
-Try now at [wordwiz.parkershumard.com](wordwiz.parkershumard.com)!
+Try now at [wordwiz.parkershumard.com](https://wordwiz.parkershumard.com)!

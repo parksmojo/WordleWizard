@@ -17,6 +17,13 @@
   gap: 0.5em;
 }
 
+.right-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .back {
   cursor: pointer;
 }

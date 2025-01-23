@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { InstructionsComponent } from '../instructions/instructions.component';
+import { SettingsComponent } from '../settings/settings.component';
 
 @Component({
   selector: 'app-header',
-  imports: [InstructionsComponent],
+  imports: [InstructionsComponent, SettingsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -12,16 +13,6 @@ export class HeaderComponent {
   showMenu = false;
 
   constructor(protected route: Router) {}
-
-  openMenu() {
-    this.showMenu = true;
-    document.body.classList.add('no-scroll');
-  }
-
-  closeMenu() {
-    this.showMenu = false;
-    document.body.classList.remove('no-scroll');
-  }
 
   goHome() {
     this.showMenu = false;

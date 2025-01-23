@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-instructions',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './instructions.component.html',
   styleUrl: './instructions.component.css',
 })

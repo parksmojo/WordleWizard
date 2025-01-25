@@ -2,12 +2,15 @@
   "name": "wordlewizard",
   "version": "1.2.2",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build && firebase deploy"
+    "ci-testing": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
+    "deploy": "npm run build && firebase deploy",
+    "release": "git push --follow-tags && npm run ci-testing && npm run deploy",
+    "major-release": "npm version major -m 'Release version %s' && npm run release",
+    "minor-release": "npm version minor -m 'Release version %s' && npm run release",
+    "patch-release": "npm version patch -m 'Release version %s' && npm run release"
   },
   "private": true,
   "dependencies": {

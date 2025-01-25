@@ -45,7 +45,6 @@
   "keywords": [],
   "author": "Parker Shumard",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/parksmojo/WordleWizard/issues"
   },

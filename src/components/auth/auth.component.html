@@ -1,0 +1,27 @@
+<button class="trigger" (click)="openPopup()">Login</button>
+@if(show){
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-container">
+  @if(register === false){
+  <div class="popup-header">
+    <h2>Login</h2>
+    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+  </div>
+  <div class="content">
+    Login to save and see your stats!
+    <app-login />
+  </div>
+  <a class="switch" (click)="register = true">don't have an account?</a>
+  } @else {
+  <div class="popup-header">
+    <h2>Register</h2>
+    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+  </div>
+  <div class="content">
+    Make an account to save and see your stats!
+    <app-register />
+  </div>
+  <a class="switch" (click)="register = false">already have an account?</a>
+  }
+</div>
+}

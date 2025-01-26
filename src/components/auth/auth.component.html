@@ -9,7 +9,7 @@
   </div>
   <div class="content">
     Login to save and see your stats!
-    <app-login />
+    <app-login (complete)="closePopup()" />
   </div>
   <a class="switch" (click)="register = true">don't have an account?</a>
   } @else {
@@ -19,7 +19,7 @@
   </div>
   <div class="content">
     Make an account to save and see your stats!
-    <app-register />
+    <app-register (complete)="closePopup()" />
   </div>
   <a class="switch" (click)="register = false">already have an account?</a>
   }

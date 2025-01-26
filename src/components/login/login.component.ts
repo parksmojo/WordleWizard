@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormGroup,
   FormControl,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,24 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  @Output() complete = new EventEmitter<void>();
+
+  constructor(private authService: AuthService) {}
+
   loginForm = new FormGroup({
-    username: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
   });
 
-  login() {
-    throw new Error('Method not implemented.');
+  async login() {
+    if (!this.loginForm.valid) {
+      throw new Error('Form incomplete');
+    }
+    this.loginForm.disable();
+    await this.authService.login(
+      this.loginForm.value.email!,
+      this.loginForm.value.password!
+    );
+    this.complete.emit();
   }
 }

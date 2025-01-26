@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import packageJson from '../../../package.json';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,7 +11,14 @@ import packageJson from '../../../package.json';
 })
 export class SettingsComponent {
   @Input() show: boolean = false;
+  canLogout: boolean = false;
   version = packageJson.version;
+
+  constructor(private authService: AuthService) {
+    if (authService.isSignedIn()) {
+      this.canLogout = true;
+    }
+  }
 
   closePopup() {
     this.show = false;
@@ -19,7 +27,9 @@ export class SettingsComponent {
     this.show = true;
   }
 
-  logout() {
-    throw new Error('Method not implemented.');
+  async logout() {
+    await this.authService.logout();
+    this.canLogout = false;
+    this.closePopup();
   }
 }

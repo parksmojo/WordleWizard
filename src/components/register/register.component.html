@@ -2,6 +2,18 @@
   <input formControlName="email" placeholder="email" type="email" />
   <input formControlName="username" placeholder="username" type="text" />
   <input formControlName="password" placeholder="password" type="password" />
+  @if(!registerForm.valid && (registerForm.dirty || registerForm.touched)){
+  <div class="error">
+    @if(email?.hasError('required')){ Email is required } @else if
+    (email?.hasError('email')) { Email is not valid } @else if
+    (username?.hasError('required')) { Username is required } @else if
+    (username?.hasError('pattern')) { Username has illegal characters } @else if
+    (username?.hasError('minlength')) { Username too short } @else if
+    (username?.hasError('maxlength')) { Username too long } @else if
+    (password?.hasError('required')) { Password is required } @else if
+    (password?.hasError('minlength')) { Password too short }
+  </div>
+  }
   <button class="submit" type="submit" [disabled]="!registerForm.valid">
     Register
   </button>

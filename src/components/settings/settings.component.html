@@ -9,7 +9,9 @@
   <div class="content">
     <a href="https://parkershumard.com" target="_blank">Parker Shumard</a>
     <p class="version">v{{ version }}</p>
-    <button class="logout" (click)="logout()">Logout</button>
+    <button class="logout" [disabled]="!canLogout" (click)="logout()">
+      Logout
+    </button>
   </div>
 </div>
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthComponent } from '../../components/auth/auth.component';
 import packageJson from '../../../package.json';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-about',
@@ -11,5 +12,9 @@ import packageJson from '../../../package.json';
 })
 export class AboutComponent {
   version = packageJson.version;
-  constructor(protected route: Router) {}
+  constructor(protected route: Router, private authService: AuthService) {}
+
+  isSignedIn() {
+    return this.authService.isSignedIn();
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDpWDz-i8vGRVVJkiurDqinj2WraZrwgOU',
@@ -18,6 +19,7 @@ const firebaseConfig = {
 export class FirebaseService {
   private _app = initializeApp(firebaseConfig);
   private _auth = getAuth(this._app);
+  private _firestore = getFirestore(this._app);
 
   get app() {
     return this._app;
@@ -25,5 +27,9 @@ export class FirebaseService {
 
   get auth() {
     return this._auth;
+  }
+
+  get db() {
+    return this._firestore;
   }
 }

@@ -22,9 +22,11 @@ export class SettingsComponent {
 
   closePopup() {
     this.show = false;
+    document.body.classList.remove('no-scroll');
   }
   openPopup() {
     this.show = true;
+    document.body.classList.add('no-scroll');
   }
 
   async logout() {

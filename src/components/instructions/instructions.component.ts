@@ -12,8 +12,10 @@ export class InstructionsComponent {
 
   closePopup() {
     this.showInstructions = false;
+    document.body.classList.remove('no-scroll');
   }
   openPopup() {
     this.showInstructions = true;
+    document.body.classList.add('no-scroll');
   }
 }

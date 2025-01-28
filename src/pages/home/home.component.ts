@@ -6,6 +6,7 @@ import { ListComponent } from '../../components/list/list.component';
 import { WordList } from '../../model/word-list/word-list';
 import { HelpfulComponent } from '../../components/helpful/helpful.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { HomeService } from '../../presenters/home/home.service';
 
 @Component({
   selector: 'app-home',
@@ -25,12 +26,15 @@ export class HomeComponent {
   wordList: WordList = new WordList();
   activeTab: string = 'all';
 
-  addGuess(guess: Guess) {
+  constructor(private presenter: HomeService) {}
+
+  async addGuess(guess: Guess) {
     this.guesses.push(guess);
     if (guess.score === -1) {
       this.foundAnswer = true;
     }
     this.wordList.filterByGuess(guess);
+    await this.presenter.recordGuess(guess);
   }
 
   resetGame() {

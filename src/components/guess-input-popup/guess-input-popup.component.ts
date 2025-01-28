@@ -49,6 +49,7 @@ export class GuessInputPopupComponent {
   }
 
   submitGuess() {
+    console.log(this.guessForm.value.word!, this.colors, this.guessNumber);
     this.guess.emit(
       new Guess(this.guessForm.value.word!, this.colors, this.guessNumber)
     );

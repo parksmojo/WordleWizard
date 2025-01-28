@@ -24,6 +24,7 @@ import { ColorPickerComponent } from '../color-picker/color-picker.component';
 export class GuessInputPopupComponent {
   @ViewChild('textInput') inputElement!: ElementRef;
   @Input() presetGuess = '';
+  @Input() guessNumber = 0;
   @Output() close = new EventEmitter<void>();
   @Output() guess = new EventEmitter<Guess>();
   colors = 'bbbbb';
@@ -31,7 +32,7 @@ export class GuessInputPopupComponent {
   guessForm = new FormGroup({
     word: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[a-z]{5}\s*$/i),
+      Validators.pattern(Guess.wordFormat),
     ]),
   });
 
@@ -48,7 +49,9 @@ export class GuessInputPopupComponent {
   }
 
   submitGuess() {
-    this.guess.emit(new Guess(this.guessForm.value.word!, this.colors));
+    this.guess.emit(
+      new Guess(this.guessForm.value.word!, this.colors, this.guessNumber)
+    );
   }
 
   closePopup() {

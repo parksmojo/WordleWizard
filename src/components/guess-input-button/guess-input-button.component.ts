@@ -9,6 +9,7 @@ import { Guess } from '../../model/guess/guess';
   styleUrl: './guess-input-button.component.css',
 })
 export class GuessInputButtonComponent {
+  @Input() guessNumber = 0;
   @Input() presetGuess = '';
   @Output() newGuess = new EventEmitter<Guess>();
   showPopup = false;

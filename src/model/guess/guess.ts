@@ -5,23 +5,28 @@ export class Guess {
   private _word: string;
   private _colors: string;
   private _score: number;
+  private _guessNumber: number;
 
-  private wordFormat = /^[a-z]{5}$/i;
-  private colorFormat = /^[bgy]{5}$/i;
-  private answerFormat = /^[g]{5}$/i;
+  public static readonly wordFormat = /^[a-z]{5}$/i;
+  public static readonly colorFormat = /^[bgy]{5}$/i;
+  public static readonly answerFormat = /^[g]{5}$/i;
 
-  constructor(guess: string, colors: string) {
-    if (!this.wordFormat.test(guess)) {
+  constructor(guess: string, colors: string, guessNumber: number) {
+    if (!Guess.wordFormat.test(guess)) {
       throw new Error('Guess input of wrong length');
     }
-    if (!this.colorFormat.test(colors)) {
+    if (!Guess.colorFormat.test(colors)) {
       throw new Error('Colors input incorrectly');
+    }
+    if (guessNumber < 1 || guessNumber > 6) {
+      throw new Error('Guess number out of range');
     }
     this._word = guess.toLowerCase();
     this._colors = colors.toLowerCase();
-    this._score = this.answerFormat.test(colors)
+    this._score = Guess.answerFormat.test(colors)
       ? -1
       : this.calcScore(this._colors);
+    this._guessNumber = guessNumber;
   }
 
   private calcScore(colors: string) {
@@ -53,5 +58,9 @@ export class Guess {
 
   public get score() {
     return this._score;
+  }
+
+  public get guessNumber() {
+    return this._guessNumber;
   }
 }

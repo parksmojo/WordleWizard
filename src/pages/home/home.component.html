@@ -5,7 +5,10 @@
     <app-guess-board [guesses]="guesses" />
 
     @if(guesses.length < 6 && !foundAnswer){
-    <app-guess-input-button (newGuess)="addGuess($event)" />
+    <app-guess-input-button
+      (newGuess)="addGuess($event)"
+      [guessNumber]="guesses.length + 1"
+    />
     } @else {
     <div class="game-over">
       <button class="reset" (click)="resetGame()">Reset Game</button>

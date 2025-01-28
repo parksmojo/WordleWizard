@@ -18,6 +18,7 @@ import { Guess } from '../../model/guess/guess';
 export class ListComponent {
   @Input() possibleGuesses: string[] = [];
   @Input() possibleAnswers: string[] = [];
+  @Input() guessNumber: number = 0;
   presetGuess = '';
 
   private _showAnswers: boolean = false;

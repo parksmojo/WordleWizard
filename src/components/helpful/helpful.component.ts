@@ -11,6 +11,7 @@ import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup
 export class HelpfulComponent {
   @Input() words: string[] = [];
   @Input() letters: string[] = [];
+  @Input() guessNumber: number = 0;
   presetGuess = '';
 
   pickGuess(word: string) {

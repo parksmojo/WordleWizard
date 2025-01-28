@@ -36,12 +36,14 @@
     <app-list
       [possibleGuesses]="wordList.possibleGuesses"
       [possibleAnswers]="wordList.possibleAnswers"
+      [guessNumber]="guesses.length + 1"
       (newGuess)="addGuess($event)"
     />
     } @else {
     <app-helpful
       [letters]="wordList.helpfulLetters"
       [words]="wordList.helpfulWords"
+      [guessNumber]="guesses.length + 1"
       (newGuess)="addGuess($event)"
     />
     }

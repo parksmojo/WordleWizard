@@ -1,10 +1,13 @@
 <div class="page-header">
   <div class="left-side">
-    <div class="back" (click)="route.navigate(['/'])"><</div>
+    <div class="back" (click)="goAbout()"><</div>
     <div class="page-title">WordleWizard</div>
   </div>
   <div class="right-side">
     <app-instructions />
-    <app-settings />
+    @if(presenter.isSignedIn();){
+    <app-stats />
+    }
+    <app-settings (complete)="goAbout()" />
   </div>
 </div>

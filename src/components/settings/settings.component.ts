@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import packageJson from '../../../package.json';
 import { AuthService } from '../../services/auth/auth.service';
@@ -11,20 +11,18 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class SettingsComponent {
   @Input() show: boolean = false;
+  @Output() complete = new EventEmitter<void>();
   canLogout: boolean = false;
   version = packageJson.version;
 
-  constructor(private authService: AuthService) {
-    if (authService.isSignedIn()) {
-      this.canLogout = true;
-    }
-  }
+  constructor(private authService: AuthService) {}
 
   closePopup() {
     this.show = false;
     document.body.classList.remove('no-scroll');
   }
   openPopup() {
+    this.canLogout = this.authService.isSignedIn();
     this.show = true;
     document.body.classList.add('no-scroll');
   }
@@ -33,5 +31,6 @@ export class SettingsComponent {
     await this.authService.logout();
     this.canLogout = false;
     this.closePopup();
+    this.complete.emit();
   }
 }

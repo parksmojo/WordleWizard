@@ -18,7 +18,9 @@ export class StatsComponent {
   private ScoreSortAsc: boolean = false;
   private CountSortAsc: boolean = false;
 
-  constructor(private presenter: HomeService) {}
+  constructor(private presenter: HomeService) {
+    this.refreshStats();
+  }
 
   closePopup() {
     this.show = false;

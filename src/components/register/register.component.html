@@ -1,8 +1,8 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()">
-  <input formControlName="email" placeholder="email" type="email" />
+  <input #textInput formControlName="email" placeholder="email" type="email" />
   <input formControlName="username" placeholder="username" type="text" />
   <input formControlName="password" placeholder="password" type="password" />
-  @if(!registerForm.valid && (registerForm.dirty || registerForm.touched)){
+  @if(!registerForm.valid && isFormDirty()){
   <div class="error">
     @if(email?.hasError('required')){ Email is required } @else if
     (email?.hasError('email')) { Email is not valid } @else if

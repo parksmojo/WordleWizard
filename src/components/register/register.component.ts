@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,8 +21,15 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class RegisterComponent {
   @Output() complete = new EventEmitter<void>();
+  @ViewChild('textInput') inputElement!: ElementRef;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log('RegisterComponent initialized');
+  }
+
+  ngAfterViewInit() {
+    this.inputElement.nativeElement.focus();
+  }
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,6 +44,12 @@ export class RegisterComponent {
       Validators.minLength(6),
     ]),
   });
+
+  isFormDirty(): boolean {
+    return Object.values(this.registerForm.controls).every(
+      (control) => control.touched || control.dirty
+    );
+  }
 
   get email() {
     return this.registerForm.get('email');

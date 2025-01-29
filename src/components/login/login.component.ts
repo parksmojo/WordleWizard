@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,16 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  @Output() complete = new EventEmitter<void>();
+  @ViewChild('textInput') inputElement!: ElementRef;
+  failed = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {
+    console.log('LoginComponent initialized');
+  }
+
+  ngAfterViewInit() {
+    this.inputElement.nativeElement.focus();
+  }
 
   loginForm = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -24,14 +32,23 @@ export class LoginComponent {
   });
 
   async login() {
+    this.failed = false;
     if (!this.loginForm.valid) {
       throw new Error('Form incomplete');
     }
     this.loginForm.disable();
-    await this.authService.login(
-      this.loginForm.value.email!,
-      this.loginForm.value.password!
-    );
-    this.complete.emit();
+    try {
+      await this.authService.login(
+        this.loginForm.value.email!,
+        this.loginForm.value.password!
+      );
+    } catch (e) {
+      console.error(e);
+      this.loginForm.enable();
+      this.failed = true;
+      this.loginForm.reset();
+      return;
+    }
+    this.router.navigate(['/home']);
   }
 }

@@ -1,6 +1,9 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-  <input formControlName="email" placeholder="email" type="email" />
+  <input #textInput formControlName="email" placeholder="email" type="email" />
   <input formControlName="password" placeholder="password" type="password" />
+  @if(failed){
+  <div class="error">Login failed, try again</div>
+  }
   <button class="submit" type="submit" [disabled]="!loginForm.valid">
     Login
   </button>

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 
@@ -10,8 +9,8 @@ import { RegisterComponent } from '../register/register.component';
   styleUrl: './auth.component.css',
 })
 export class AuthComponent {
-  register: boolean = false;
   @Input() show: boolean = false;
+  register: boolean = false;
 
   closePopup() {
     this.show = false;

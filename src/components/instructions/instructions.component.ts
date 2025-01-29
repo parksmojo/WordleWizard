@@ -11,10 +11,12 @@ export class InstructionsComponent {
   @Input() showInstructions: boolean = false;
 
   closePopup() {
+    console.log('Closing Instructions popup');
     this.showInstructions = false;
     document.body.classList.remove('no-scroll');
   }
   openPopup() {
+    console.log('Opening Instructions popup');
     this.showInstructions = true;
     document.body.classList.add('no-scroll');
   }

@@ -15,6 +15,7 @@ export class FirestoreService {
   private readonly userStatsCollection = collection(this.db, 'userStats');
 
   public async getUserStats(user: User): Promise<UserStats> {
+    console.log(`DB getting stats for: ${user.displayName}(${user.uid})`);
     const docRef = doc(this.userStatsCollection, user.uid);
     const docSnap = await getDoc(docRef);
     let stats: UserStats = docSnap.exists()
@@ -24,11 +25,21 @@ export class FirestoreService {
   }
 
   public async saveUserStats(userStats: UserStats): Promise<void> {
+    console.log(
+      `DB uploading stats for user: ${userStats.username}(${userStats.uid})`
+    );
     const docRef = doc(this.userStatsCollection, userStats.uid);
     await setDoc(docRef, userStats);
   }
 
   public async saveGuess(user: User, guess: Guess): Promise<void> {
+    console.log(
+      'DB saving guess: ' +
+        guess +
+        ' for user: ' +
+        user.displayName +
+        `(${user.uid})`
+    );
     const userStats = await this.getUserStats(user);
     const guessIndex = userStats.guesses.findIndex(
       (g) => g.word === guess.word

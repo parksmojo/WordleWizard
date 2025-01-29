@@ -18,11 +18,13 @@ export class ColorPickerComponent {
   }
 
   nextColor(index: number): void {
+    console.log('Next color for index:', index);
     this.colors[index] = Colors.get(this.colors[index]).next;
-    this.submitColors();
+    this.updateColors();
   }
 
-  submitColors(): void {
+  updateColors(): void {
+    console.log('Updating colors:', this.colors.join(''));
     this.colorString.emit(this.colors.join(''));
   }
 }

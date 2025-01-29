@@ -24,6 +24,7 @@ export class Guess {
     this._colors = colors.toLowerCase();
     this._score = this.calcScore(this._colors);
     this._guessNumber = guessNumber;
+    console.log('Guess object created: ' + this);
   }
 
   private calcScore(colors: string) {
@@ -59,5 +60,13 @@ export class Guess {
 
   public get guessNumber() {
     return this._guessNumber;
+  }
+
+  public toString() {
+    return `Guess: 
+  - '${this._word}'
+  - ${this._colors}
+  - ${this._score} pts
+  - ${this._guessNumber}th guess`;
   }
 }

@@ -24,15 +24,18 @@ export class StatsComponent {
   }
 
   closePopup() {
+    console.log('Closing Stats popup');
     this.show = false;
     document.body.classList.remove('no-scroll');
   }
   openPopup() {
+    console.log('Opening Stats popup');
     this.refreshStats();
     this.show = true;
     document.body.classList.add('no-scroll');
   }
   private async refreshStats() {
+    console.log('Refreshing stats');
     this.stats = await this.presenter.getStats();
     this.averages = this.stats.guesses.map((guess) => ({
       word: guess.word,
@@ -42,39 +45,51 @@ export class StatsComponent {
     }));
   }
 
-  sortWords(fn: (a: GuessStats, b: GuessStats) => number) {
-    this.averages.sort(fn);
+  sortWords(
+    sortAsc: boolean,
+    ascFn: (a: GuessStats, b: GuessStats) => number,
+    descFn: (a: GuessStats, b: GuessStats) => number
+  ) {
+    if (sortAsc) {
+      this.averages.sort(ascFn);
+    } else {
+      this.averages.sort(descFn);
+    }
   }
   sortWordsByName() {
-    if (this.NameSortAsc) {
-      this.sortWords((a, b) => a.word.localeCompare(b.word));
-    } else {
-      this.sortWords((a, b) => b.word.localeCompare(a.word));
-    }
+    console.log('Sorting words by name');
+    this.sortWords(
+      this.NameSortAsc,
+      (a, b) => a.word.localeCompare(b.word),
+      (a, b) => b.word.localeCompare(a.word)
+    );
     this.NameSortAsc = !this.NameSortAsc;
   }
   sortWordsByScore() {
-    if (this.ScoreSortAsc) {
-      this.sortWords((a, b) => a.score - b.score);
-    } else {
-      this.sortWords((a, b) => b.score - a.score);
-    }
+    console.log('Sorting words by score');
+    this.sortWords(
+      this.ScoreSortAsc,
+      (a, b) => a.score - b.score,
+      (a, b) => b.score - a.score
+    );
     this.ScoreSortAsc = !this.ScoreSortAsc;
   }
   sortWordsByCount() {
-    if (this.CountSortAsc) {
-      this.sortWords((a, b) => a.count - b.count);
-    } else {
-      this.sortWords((a, b) => b.count - a.count);
-    }
+    console.log('Sorting words by count');
+    this.sortWords(
+      this.CountSortAsc,
+      (a, b) => a.count - b.count,
+      (a, b) => b.count - a.count
+    );
     this.CountSortAsc = !this.CountSortAsc;
   }
   sortWordsByGuessNum() {
-    if (this.GuessNumSortAsc) {
-      this.sortWords((a, b) => a.guessNumber - b.guessNumber);
-    } else {
-      this.sortWords((a, b) => b.guessNumber - a.guessNumber);
-    }
+    console.log('Sorting words by guess number');
+    this.sortWords(
+      this.GuessNumSortAsc,
+      (a, b) => a.guessNumber - b.guessNumber,
+      (a, b) => b.guessNumber - a.guessNumber
+    );
     this.GuessNumSortAsc = !this.GuessNumSortAsc;
   }
 }

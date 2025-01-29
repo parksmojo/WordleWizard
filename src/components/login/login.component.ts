@@ -23,6 +23,7 @@ export class LoginComponent {
   }
 
   ngAfterViewInit() {
+    console.log('LoginComponent view initialized');
     this.inputElement.nativeElement.focus();
   }
 
@@ -32,6 +33,7 @@ export class LoginComponent {
   });
 
   async login() {
+    console.log('LoginComponent login called');
     this.failed = false;
     if (!this.loginForm.valid) {
       throw new Error('Form incomplete');

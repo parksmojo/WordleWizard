@@ -12,12 +12,14 @@ export class AuthComponent {
   @Input() show: boolean = false;
   register: boolean = false;
 
-  closePopup() {
-    this.show = false;
-    document.body.classList.remove('no-scroll');
-  }
   openPopup() {
+    console.log('Opening Auth popup');
     this.show = true;
     document.body.classList.add('no-scroll');
+  }
+  closePopup() {
+    console.log('Closing Auth popup');
+    this.show = false;
+    document.body.classList.remove('no-scroll');
   }
 }

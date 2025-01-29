@@ -17,6 +17,7 @@ export class HeaderComponent {
   constructor(protected route: Router, protected presenter: HomeService) {}
 
   goAbout() {
+    console.log('HeaderComponent: Navigating to /about');
     this.showMenu = false;
     this.route.navigate(['/about']);
   }

@@ -29,6 +29,9 @@ export class HomeComponent {
   constructor(private presenter: HomeService) {}
 
   async addGuess(guess: Guess) {
+    console.groupCollapsed('Page adding guess to list');
+    console.log(guess.toString());
+    console.groupEnd();
     this.guesses.push(guess);
     if (guess.score === 10) {
       this.foundAnswer = true;
@@ -38,6 +41,7 @@ export class HomeComponent {
   }
 
   resetGame() {
+    console.log('Page resetting game');
     this.guesses = [];
     this.foundAnswer = false;
     this.wordList.reset();

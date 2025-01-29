@@ -33,10 +33,17 @@ export class Filter {
   }
 
   public static fromGuess(guess: Guess): Filter[] {
+    console.groupCollapsed('Creating filters from guess');
+    console.log(guess.toString());
+    console.groupEnd();
     const filters: Filter[] = [];
     for (let i = 0; i < guess.word.length; i++) {
       filters.push(new Filter(guess.word[i], i, guess.colors[i]));
     }
     return filters;
+  }
+
+  toString(): string {
+    return `Filter: ${this._color} ${this._character} at ${this._position}`;
   }
 }

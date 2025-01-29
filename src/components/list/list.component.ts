@@ -26,10 +26,10 @@ export class ListComponent {
 
   @Input()
   set showAnswers(value: boolean) {
+    console.log(`${value ? 'Showing' : 'Hiding'} answer list`);
     this._showAnswers = value;
     this.updateList();
   }
-
   get showAnswers(): boolean {
     return this._showAnswers;
   }
@@ -39,10 +39,12 @@ export class ListComponent {
   }
 
   private updateList(): void {
+    console.log(`Updating displayed lists`);
     this.list = this._showAnswers ? this.possibleAnswers : this.possibleGuesses; //.slice(0, 100);
   }
 
   pickGuess(word: string) {
+    console.log('Picking helpful guess:', word);
     this.presetGuess = word;
     this.openPopup();
   }
@@ -51,16 +53,19 @@ export class ListComponent {
   showPopup = false;
 
   openPopup() {
+    console.log('Opening GuessInputPopup from ListComponent');
     this.showPopup = true;
     document.body.classList.add('no-scroll');
   }
 
   closePopup() {
+    console.log('Closing GuessInputPopup from ListComponent');
     this.showPopup = false;
     document.body.classList.remove('no-scroll');
   }
 
   submitGuess(newGuess: Guess) {
+    console.log('Submitting guess from ListComponent: ' + newGuess);
     this.newGuess.emit(newGuess);
     this.closePopup();
   }

@@ -21,12 +21,14 @@ export class WordList {
   private _helpfulWords: string[] = [];
 
   constructor() {
+    console.log('WordList object created');
     this._allPossibleGuesses = getPossibleGuesses();
     this._allPossibleAnswers = getPossibleAnswers();
     this.reset();
   }
 
   public reset() {
+    console.log('WordList reset');
     this._filters = [];
     this._possibleGuesses = [...this._allPossibleGuesses];
     this._possibleAnswers = [...this._allPossibleAnswers];
@@ -37,20 +39,18 @@ export class WordList {
   get possibleGuesses(): string[] {
     return this._possibleGuesses;
   }
-
   get possibleAnswers(): string[] {
     return this._possibleAnswers;
   }
-
   get helpfulWords(): string[] {
     return this._helpfulWords;
   }
-
   get helpfulLetters(): string[] {
     return this._helpfulLetters;
   }
 
   public filterByGuess(guess: Guess): void {
+    console.log('WordList filtering by guess: ' + guess);
     this.addFilters(Filter.fromGuess(guess));
     this._possibleGuesses = this.applyFiltersTo(this._allPossibleGuesses);
     this._possibleAnswers = this.applyFiltersTo(this._allPossibleAnswers);
@@ -59,25 +59,39 @@ export class WordList {
   }
 
   private addFilters(filters: Filter[]): void {
+    console.groupCollapsed('WordList adding filters');
     for (let filter of filters) {
+      console.group('WordList checking ' + filter);
       const existingIndex = this._filters.findIndex(
         (char) => char.character === filter.character
       );
       if (existingIndex >= 0) {
+        console.log(
+          `Filter of '${filter.character.toUpperCase()}' already exists`
+        );
         if (this._filters[existingIndex].color == Colors.yellow) {
           if (filter.color === Colors.green) {
+            console.log('Changing filter to green');
             this._filters[existingIndex] = filter;
           } else if (filter.color === Colors.yellow) {
+            console.log('Adding yellow filter');
             this._filters.push(filter);
           }
         }
       } else {
+        console.log('Adding filter');
         this._filters.push(filter);
       }
+      console.groupEnd();
     }
+    console.groupEnd();
   }
 
   private applyFiltersTo(words: string[], filters?: Filter[]): string[] {
+    console.groupCollapsed(
+      'WordList applying filters to a list beginning with:',
+      words[0]
+    );
     filters ??= this._filters;
     const filteredWords = words.filter((word) => {
       for (let filter of filters) {
@@ -87,10 +101,15 @@ export class WordList {
       }
       return true;
     });
+    console.log(
+      `Filtered from ${words.length} words to ${filteredWords.length} words`
+    );
+    console.groupEnd();
     return filteredWords;
   }
 
   private findHelpfulLetters(numLetters?: number): string[] {
+    console.log('WordList finding helpful letters');
     numLetters ??= 5;
     const checkedLetters = new Set(
       this._filters.map((filter) => filter.character)
@@ -116,6 +135,7 @@ export class WordList {
   }
 
   private findHelpfulWords(numWords?: number): string[] {
+    console.log('WordList finding helpful words');
     numWords ??= 15;
     const filters = this._helpfulLetters.map(
       (letter) => new Filter(letter, 0, Colors.orange)
@@ -127,5 +147,14 @@ export class WordList {
     }
     const uniqueWords = new Set<string>(allWords);
     return Array.from(uniqueWords).slice(0, numWords);
+  }
+
+  toString(): string {
+    return `WordList: 
+  - ${this._possibleGuesses.length} possible guesses
+  - ${this._possibleAnswers.length} possible answers
+  - ${this._helpfulWords.length} helpful words
+  - ${this._filters.length} filters: 
+    - ${this._filters.join('\n    - ')}`;
   }
 }

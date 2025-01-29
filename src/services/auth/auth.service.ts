@@ -20,6 +20,7 @@ export class AuthService {
     username: string,
     password: string
   ): Promise<void> {
+    console.log('Auth registering user with email: ' + email);
     const userCredential = await createUserWithEmailAndPassword(
       this.auth,
       email,
@@ -29,10 +30,12 @@ export class AuthService {
   }
 
   public async login(email: string, password: string): Promise<void> {
+    console.log('Auth logging in user with email: ' + email);
     await signInWithEmailAndPassword(this.auth, email, password);
   }
 
   public async logout(): Promise<void> {
+    console.log('Auth logging out user');
     await signOut(this.auth);
   }
 

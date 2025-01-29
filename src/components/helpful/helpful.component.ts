@@ -15,6 +15,7 @@ export class HelpfulComponent {
   presetGuess = '';
 
   pickGuess(word: string) {
+    console.log('Picking helpful guess:', word);
     this.presetGuess = word;
     this.openPopup();
   }
@@ -23,16 +24,19 @@ export class HelpfulComponent {
   showPopup = false;
 
   openPopup() {
+    console.log('Opening GuessInputPopup from HelpfulComponent');
     this.showPopup = true;
     document.body.classList.add('no-scroll');
   }
 
   closePopup() {
+    console.log('Closing GuessInputPopup from HelpfulComponent');
     this.showPopup = false;
     document.body.classList.remove('no-scroll');
   }
 
   submitGuess(newGuess: Guess) {
+    console.log('Submitting guess from HelpfulComponent: ' + newGuess);
     this.newGuess.emit(newGuess);
     this.closePopup();
   }

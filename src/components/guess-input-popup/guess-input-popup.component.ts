@@ -37,6 +37,11 @@ export class GuessInputPopupComponent {
   });
 
   ngAfterViewInit() {
+    console.log(
+      `GuessInputPopup initialized${
+        this.presetGuess ? ` with preset guess: ${this.presetGuess}` : ''
+      }`
+    );
     if (this.presetGuess === '') {
       this.inputElement.nativeElement.focus();
     } else {
@@ -45,21 +50,29 @@ export class GuessInputPopupComponent {
   }
 
   setColors(colorString: string) {
+    console.log('Guess input popup setting colors:', colorString);
     this.colors = colorString;
   }
 
   submitGuess() {
-    console.log(this.guessForm.value.word!, this.colors, this.guessNumber);
-    this.guess.emit(
-      new Guess(this.guessForm.value.word!, this.colors, this.guessNumber)
+    const guess = new Guess(
+      this.guessForm.value.word!,
+      this.colors,
+      this.guessNumber
     );
+    console.groupCollapsed('Submitting guess from input popup:');
+    console.log(guess.toString());
+    console.groupEnd();
+    this.guess.emit(guess);
   }
 
   closePopup() {
+    console.log('Closing GuessInputPopup');
     this.close.emit();
   }
 
   foundAnswer() {
+    console.log('GuessInputPopup found answer!');
     this.colors = 'ggggg';
   }
 }

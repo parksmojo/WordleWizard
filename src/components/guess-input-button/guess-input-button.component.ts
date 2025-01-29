@@ -15,16 +15,21 @@ export class GuessInputButtonComponent {
   showPopup = false;
 
   openPopup() {
+    console.log('Opening GuessInputPopup');
     this.showPopup = true;
     document.body.classList.add('no-scroll');
   }
 
   closePopup() {
+    console.log('Closing GuessInputPopup');
     this.showPopup = false;
     document.body.classList.remove('no-scroll');
   }
 
   submitGuess(newGuess: Guess) {
+    console.groupCollapsed('Submitting guess from input button:');
+    console.log(newGuess.toString());
+    console.groupEnd();
     this.newGuess.emit(newGuess);
     this.closePopup();
   }

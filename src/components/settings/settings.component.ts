@@ -18,16 +18,19 @@ export class SettingsComponent {
   constructor(private authService: AuthService) {}
 
   closePopup() {
+    console.log('Closing Settings popup');
     this.show = false;
     document.body.classList.remove('no-scroll');
   }
   openPopup() {
+    console.log('Opening Settings popup');
     this.canLogout = this.authService.isSignedIn();
     this.show = true;
     document.body.classList.add('no-scroll');
   }
 
   async logout() {
+    console.log('Logging out from settings popup');
     await this.authService.logout();
     this.canLogout = false;
     this.closePopup();

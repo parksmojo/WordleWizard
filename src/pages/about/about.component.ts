@@ -12,9 +12,5 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class AboutComponent {
   version = packageJson.version;
-  constructor(protected route: Router, private authService: AuthService) {}
-
-  isSignedIn() {
-    return this.authService.isSignedIn();
-  }
+  constructor(protected route: Router, protected authService: AuthService) {}
 }

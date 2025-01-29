@@ -12,6 +12,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +21,14 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  @Output() complete = new EventEmitter<void>();
   @ViewChild('textInput') inputElement!: ElementRef;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     console.log('RegisterComponent initialized');
   }
 
   ngAfterViewInit() {
+    console.log('RegisterComponent view initialized');
     this.inputElement.nativeElement.focus();
   }
 
@@ -62,6 +63,7 @@ export class RegisterComponent {
   }
 
   async register() {
+    console.log('RegisterComponent register called');
     if (!this.registerForm.valid) {
       throw new Error('Form incomplete');
     }
@@ -71,6 +73,6 @@ export class RegisterComponent {
       this.registerForm.value.username!,
       this.registerForm.value.password!
     );
-    this.complete.emit();
+    this.router.navigate(['/home']);
   }
 }

@@ -9,7 +9,7 @@ import { Colors } from '../../model/colors/colors';
   styleUrl: './guess-row.component.css',
 })
 export class GuessRowComponent {
-  @Input() guess: Guess = new Guess('tales', 'bbbbb', 1);
+  @Input() guess: Guess | null = null;
 
   getColor(colorCode: string): string {
     return Colors.get(colorCode).hex;

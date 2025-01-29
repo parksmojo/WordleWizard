@@ -9,7 +9,6 @@ export class Guess {
 
   public static readonly wordFormat = /^[a-z]{5}$/i;
   public static readonly colorFormat = /^[bgy]{5}$/i;
-  public static readonly answerFormat = /^[g]{5}$/i;
 
   constructor(guess: string, colors: string, guessNumber: number) {
     if (!Guess.wordFormat.test(guess)) {
@@ -23,9 +22,7 @@ export class Guess {
     }
     this._word = guess.toLowerCase();
     this._colors = colors.toLowerCase();
-    this._score = Guess.answerFormat.test(colors)
-      ? -1
-      : this.calcScore(this._colors);
+    this._score = this.calcScore(this._colors);
     this._guessNumber = guessNumber;
   }
 

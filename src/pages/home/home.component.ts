@@ -30,7 +30,7 @@ export class HomeComponent {
 
   async addGuess(guess: Guess) {
     this.guesses.push(guess);
-    if (guess.score === -1) {
+    if (guess.score === 10) {
       this.foundAnswer = true;
     }
     this.wordList.filterByGuess(guess);

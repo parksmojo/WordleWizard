@@ -1,0 +1,30 @@
+<mat-icon class="trigger" (click)="openPopup()" fontIcon="leaderboard" />
+@if(show){
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-container">
+  <div class="popup-header">
+    <h2>{{ stats.username }}'s Stats</h2>
+    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+  </div>
+  <div class="content">
+    <div class="filters">
+      <div>Sort by:</div>
+      <button (click)="sortWordsByName()">Name</button>
+      <button (click)="sortWordsByScore()">Score</button>
+      <button (click)="sortWordsByCount()">Count</button>
+    </div>
+    <div class="table">
+      <div>Word</div>
+      <div>Score</div>
+      <div>Nth Guess</div>
+      <div>Count</div>
+      @for(word of averages.slice(0,10); track word.word){
+      <div>{{ word.word }}</div>
+      <div>{{ word.score }}</div>
+      <div>{{ word.guessNumber }}</div>
+      <div>{{ word.count }}</div>
+      }
+    </div>
+  </div>
+</div>
+}

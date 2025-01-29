@@ -7,22 +7,20 @@
     <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
   </div>
   <div class="content">
-    <div class="filters">
-      <div>Sort by:</div>
-      <button (click)="sortWordsByName()">Name</button>
-      <button (click)="sortWordsByScore()">Score</button>
-      <button (click)="sortWordsByCount()">Count</button>
-    </div>
     <div class="table">
-      <div>Word</div>
-      <div>Score</div>
-      <div>Nth Guess</div>
-      <div>Count</div>
+      <div class="table-header">
+        <button (click)="sortWordsByName()">Name</button>
+        <button (click)="sortWordsByCount()">Count</button>
+        <button (click)="sortWordsByScore()">Score</button>
+        <button (click)="sortWordsByGuessNum()">Guess</button>
+      </div>
       @for(word of averages.slice(0,10); track word.word){
-      <div>{{ word.word }}</div>
-      <div>{{ word.score }}</div>
-      <div>{{ word.guessNumber }}</div>
-      <div>{{ word.count }}</div>
+      <div class="table-row">
+        <div>{{ word.word.toLocaleUpperCase() }}</div>
+        <div>{{ word.count }}</div>
+        <div>{{ word.score }}</div>
+        <div>{{ word.guessNumber }}</div>
+      </div>
       }
     </div>
   </div>

@@ -17,6 +17,7 @@ export class StatsComponent {
   private NameSortAsc: boolean = true;
   private ScoreSortAsc: boolean = false;
   private CountSortAsc: boolean = false;
+  private GuessNumSortAsc: boolean = false;
 
   constructor(private presenter: HomeService) {
     this.refreshStats();
@@ -37,7 +38,7 @@ export class StatsComponent {
       word: guess.word,
       count: guess.count,
       score: parseFloat((guess.score / guess.count).toFixed(2)),
-      guessNumber: parseFloat((guess.guessNumber / guess.count).toFixed(2)),
+      guessNumber: Math.round(guess.guessNumber / guess.count),
     }));
   }
 
@@ -67,5 +68,13 @@ export class StatsComponent {
       this.sortWords((a, b) => b.count - a.count);
     }
     this.CountSortAsc = !this.CountSortAsc;
+  }
+  sortWordsByGuessNum() {
+    if (this.GuessNumSortAsc) {
+      this.sortWords((a, b) => a.guessNumber - b.guessNumber);
+    } else {
+      this.sortWords((a, b) => b.guessNumber - a.guessNumber);
+    }
+    this.GuessNumSortAsc = !this.GuessNumSortAsc;
   }
 }

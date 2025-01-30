@@ -10,14 +10,14 @@ import { HomeService } from '../../presenters/home/home.service';
   styleUrl: './stats.component.css',
 })
 export class StatsComponent {
-  @Input() show: boolean = false;
+  @Input() show = false;
   stats: UserStats = { uid: 'n/a', username: 'n/a', guesses: [] };
   averages: GuessStats[] = [];
 
-  private NameSortAsc: boolean = true;
-  private ScoreSortAsc: boolean = false;
-  private CountSortAsc: boolean = false;
-  private GuessNumSortAsc: boolean = false;
+  private NameSortAsc = true;
+  private ScoreSortAsc = false;
+  private CountSortAsc = false;
+  private GuessNumSortAsc = false;
 
   constructor(private presenter: HomeService) {
     this.refreshStats();

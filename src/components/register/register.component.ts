@@ -3,7 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   Output,
-  ViewChild,
+  ViewChild, AfterViewInit,
 } from '@angular/core';
 import {
   FormControl,
@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewInit {
   @ViewChild('textInput') inputElement!: ElementRef;
 
   constructor(private authService: AuthService, private router: Router) {

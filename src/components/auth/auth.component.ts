@@ -9,8 +9,8 @@ import { RegisterComponent } from '../register/register.component';
   styleUrl: './auth.component.css',
 })
 export class AuthComponent {
-  @Input() show: boolean = false;
-  register: boolean = false;
+  @Input() show = false;
+  register = false;
 
   openPopup() {
     console.log('Opening Auth popup');

@@ -3,7 +3,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  SimpleChanges,
+  SimpleChanges, OnChanges,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
@@ -15,13 +15,13 @@ import { Guess } from '../../model/guess/guess';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
+export class ListComponent implements OnChanges {
   @Input() possibleGuesses: string[] = [];
   @Input() possibleAnswers: string[] = [];
-  @Input() guessNumber: number = 0;
+  @Input() guessNumber = 0;
   presetGuess = '';
 
-  private _showAnswers: boolean = false;
+  private _showAnswers = false;
   list: string[] = [];
 
   @Input()

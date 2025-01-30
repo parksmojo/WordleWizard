@@ -29,7 +29,7 @@ export class Guess {
 
   private calcScore(colors: string) {
     let score = 0;
-    for (let color of colors.split('')) {
+    for (const color of colors.split('')) {
       switch (color) {
         case Colors.yellow:
           score += 1;

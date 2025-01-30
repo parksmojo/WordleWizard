@@ -18,7 +18,7 @@ export class FirestoreService {
     console.log(`DB getting stats for: ${user.displayName}(${user.uid})`);
     const docRef = doc(this.userStatsCollection, user.uid);
     const docSnap = await getDoc(docRef);
-    let stats: UserStats = docSnap.exists()
+    const stats: UserStats = docSnap.exists()
       ? (docSnap.data() as UserStats)
       : { uid: user.uid, username: user.displayName!, guesses: [] };
     return stats;

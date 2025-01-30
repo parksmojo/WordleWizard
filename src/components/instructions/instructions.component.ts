@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './instructions.component.css',
 })
 export class InstructionsComponent {
-  @Input() showInstructions: boolean = false;
+  @Input() showInstructions = false;
 
   closePopup() {
     console.log('Closing Instructions popup');

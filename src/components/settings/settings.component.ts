@@ -10,9 +10,9 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './settings.component.css',
 })
 export class SettingsComponent {
-  @Input() show: boolean = false;
+  @Input() show = false;
   @Output() complete = new EventEmitter<void>();
-  canLogout: boolean = false;
+  canLogout = false;
   version = packageJson.version;
 
   constructor(private authService: AuthService) {}

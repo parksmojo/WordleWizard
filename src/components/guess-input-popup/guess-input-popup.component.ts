@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild,
+  ViewChild, AfterViewInit,
 } from '@angular/core';
 import {
   FormGroup,
@@ -21,7 +21,7 @@ import { ColorPickerComponent } from '../color-picker/color-picker.component';
   templateUrl: './guess-input-popup.component.html',
   styleUrl: './guess-input-popup.component.css',
 })
-export class GuessInputPopupComponent {
+export class GuessInputPopupComponent implements AfterViewInit {
   @ViewChild('textInput') inputElement!: ElementRef;
   @Input() presetGuess = '';
   @Input() guessNumber = 0;

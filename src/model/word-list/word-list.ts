@@ -60,7 +60,7 @@ export class WordList {
 
   private addFilters(filters: Filter[]): void {
     console.groupCollapsed('WordList adding filters');
-    for (let filter of filters) {
+    for (const filter of filters) {
       console.group('WordList checking ' + filter);
       const existingIndex = this._filters.findIndex(
         (char) => char.character === filter.character
@@ -94,7 +94,7 @@ export class WordList {
     );
     filters ??= this._filters;
     const filteredWords = words.filter((word) => {
-      for (let filter of filters) {
+      for (const filter of filters) {
         if (!filter.matches(word)) {
           return false;
         }
@@ -115,13 +115,13 @@ export class WordList {
       this._filters.map((filter) => filter.character)
     );
     const letterCounts = new Map();
-    for (let word of this._possibleAnswers) {
+    for (const word of this._possibleAnswers) {
       const letterArray = word.split('');
       const filteredArray = letterArray.filter(
         (letter) => !checkedLetters.has(letter)
       );
       const letters = new Set(filteredArray);
-      for (let letter of letters) {
+      for (const letter of letters) {
         letterCounts.set(
           letter,
           letterCounts.get(letter) ? letterCounts.get(letter) + 1 : 1

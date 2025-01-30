@@ -22,9 +22,9 @@ import { HomeService } from '../../presenters/home/home.service';
 })
 export class HomeComponent {
   guesses: Guess[] = [];
-  foundAnswer: boolean = false;
+  foundAnswer = false;
   wordList: WordList = new WordList();
-  activeTab: string = 'all';
+  activeTab = 'all';
 
   constructor(private presenter: HomeService) {}
 

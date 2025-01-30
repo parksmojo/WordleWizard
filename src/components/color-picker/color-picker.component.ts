@@ -9,7 +9,7 @@ import { Guess } from '../../model/guess/guess';
   styleUrl: './color-picker.component.css',
 })
 export class ColorPickerComponent {
-  @Input() word: string = '';
+  @Input() word = '';
   @Output() colorString = new EventEmitter<string>();
   @Input() colors = ['b', 'b', 'b', 'b', 'b'];
 

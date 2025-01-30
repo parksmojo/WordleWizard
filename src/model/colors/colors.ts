@@ -14,7 +14,7 @@ export class Colors {
     return this.dataOf[colorCode];
   }
 
-  private static readonly dataOf: { [key: string]: Color } = {
+  private static readonly dataOf: Record<string, Color> = {
     [this.black]: {
       hex: '#3a3a3c',
       next: this.yellow,

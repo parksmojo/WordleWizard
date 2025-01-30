@@ -1,6 +1,8 @@
 const { execSync } = require("child_process");
+const packageJson = require("../package.json");
 
 const args = process.argv.slice(2);
+const fromVersion = packageJson.version;
 let versionType = "";
 
 if (args.includes("major") || args.includes("ma")) {
@@ -15,8 +17,12 @@ if (args.includes("major") || args.includes("ma")) {
   process.exit(1);
 }
 
-console.log(`Releasing a ${versionType} version...`);
-execSync(`npm version ${versionType} -m "Release version %s"`, {
-  stdio: "inherit",
-});
-execSync("npm run ci-deploy", { stdio: "inherit" });
+function execute(command) {
+  execSync(command, { stdio: "inherit" });
+}
+
+execute(`npm version ${versionType} -m "Release version %s"`);
+console.info(`echo Releasing a new ${versionType} version`);
+console.info(`  v${fromVersion} -> v${packageJson.version}`);
+execute("git push --follow-tags");
+execute("npm run deploy");

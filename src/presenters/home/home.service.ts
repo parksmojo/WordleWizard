@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { Guess } from '../../model/guess/guess';
@@ -8,8 +8,7 @@ import { UserStats } from '../../model/user-stats/user-stats';
   providedIn: 'root',
 })
 export class HomeService {
-  private auth = inject(AuthService);
-  private db = inject(FirestoreService);
+  constructor(private auth: AuthService, private db: FirestoreService) {}
 
   public isSignedIn() {
     return this.auth.isSignedIn();

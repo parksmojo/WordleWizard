@@ -13,8 +13,8 @@ describe('WordList', () => {
   });
 
   it('should filter new yellows correctly', () => {
-    list.filterByGuess(new Guess('spark', 'yybyb'));
-    list.filterByGuess(new Guess('ports', 'ybyby'));
+    list.filterByGuess(new Guess('spark', 'yybyb', 1));
+    list.filterByGuess(new Guess('ports', 'ybyby', 2));
     expect(list.possibleGuesses).toContain('crisp');
     expect(list.possibleGuesses.length).toBe(1);
   });

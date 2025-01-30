@@ -4,10 +4,9 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "ci-test": "npm run test -- --no-watch --no-progress --browsers=ChromeHeadless",
-    "deploy": "npm run build && firebase deploy",
-    "ci-deploy": "git push --follow-tags && npm run ci-test && npm run deploy",
+    "dev": "ng test --no-progress --browsers=ChromeHeadless",
+    "test": "npm run dev -- --no-watch --code-coverage",
+    "deploy": "npm run test && npm run build && firebase deploy",
     "release": "node scripts/release-script.js"
   },
   "private": true,

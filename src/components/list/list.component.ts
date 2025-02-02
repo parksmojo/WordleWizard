@@ -3,7 +3,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  SimpleChanges, OnChanges,
+  OnChanges,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
@@ -34,7 +34,7 @@ export class ListComponent implements OnChanges {
     return this._showAnswers;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.updateList();
   }
 

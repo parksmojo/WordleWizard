@@ -1,27 +1,60 @@
 <button class="trigger" (click)="openPopup()">Login</button>
 @if(show){
-<div class="popup-overlay" (click)="closePopup()"></div>
+<div
+  class="popup-overlay"
+  (click)="closePopup()"
+  (keyup.enter)="closePopup()"
+  tabindex="0"
+></div>
 <div class="popup-container">
   @if(register === false){
   <div class="popup-header">
     <h2>Login</h2>
-    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+    <div
+      class="close"
+      (click)="closePopup()"
+      style="cursor: pointer"
+      (keyup.enter)="closePopup()"
+      tabindex="0"
+    >
+      X
+    </div>
   </div>
   <div class="content">
     Login to save and see your stats!
     <app-login (complete)="closePopup()" />
   </div>
-  <a class="switch" (click)="register = true">don't have an account?</a>
+  <a
+    class="switch"
+    (click)="register = true"
+    (keyup.enter)="register = true"
+    tabindex="0"
+    >don't have an account?</a
+  >
   } @else {
   <div class="popup-header">
     <h2>Register</h2>
-    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+    <div
+      class="close"
+      (click)="closePopup()"
+      style="cursor: pointer"
+      (keyup.enter)="closePopup()"
+      tabindex="0"
+    >
+      X
+    </div>
   </div>
   <div class="content">
     Make an account to save and see your stats!
     <app-register (complete)="closePopup()" />
   </div>
-  <a class="switch" (click)="register = false">already have an account?</a>
+  <a
+    class="switch"
+    (click)="register = false"
+    (keyup.enter)="register = false"
+    tabindex="0"
+    >already have an account?</a
+  >
   }
 </div>
 }

@@ -4,6 +4,8 @@
     class="tile"
     [style]="{ 'background-color': getColor(colors[$index]) }"
     (click)="nextColor($index)"
+    (keyup.enter)="nextColor($index)"
+    tabindex="0"
   >
     {{ word[$index] }}
   </div>

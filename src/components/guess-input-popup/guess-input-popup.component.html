@@ -1,9 +1,22 @@
-<div class="popup-overlay" (click)="closePopup()"></div>
+<div
+  class="popup-overlay"
+  (click)="closePopup()"
+  (keyup.enter)="closePopup()"
+  tabindex="0"
+></div>
 <div class="popup-container">
   <div class="popup-header">
     <h2>New Guess</h2>
     <button class="fill-answer" (click)="foundAnswer()">Fill</button>
-    <div class="close" (click)="closePopup()" style="cursor: pointer">X</div>
+    <div
+      class="close"
+      (click)="closePopup()"
+      style="cursor: pointer"
+      (keyup.enter)="closePopup()"
+      tabindex="0"
+    >
+      X
+    </div>
   </div>
   <form [formGroup]="guessForm">
     <app-color-picker

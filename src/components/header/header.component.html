@@ -1,6 +1,13 @@
 <div class="page-header">
   <div class="left-side">
-    <div class="back" (click)="goAbout()"><</div>
+    <div
+      class="back"
+      (click)="goAbout()"
+      (keyup.enter)="goAbout()"
+      tabindex="0"
+    >
+      <
+    </div>
     <div class="page-title">WordleWizard</div>
   </div>
   <div class="right-side">

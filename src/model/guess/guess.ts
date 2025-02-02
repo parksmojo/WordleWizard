@@ -1,5 +1,4 @@
 import { Colors } from '../colors/colors';
-import { Filter } from '../filter/filter';
 
 export class Guess {
   private _word: string;

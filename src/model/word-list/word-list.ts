@@ -131,7 +131,7 @@ export class WordList {
     const sortedArray = Array.from(letterCounts.entries()).sort(
       ([, countA], [, countB]) => countB - countA
     );
-    return sortedArray.slice(0, numLetters).map(([letter, count]) => letter);
+    return sortedArray.slice(0, numLetters).map(([letter]) => letter);
   }
 
   private findHelpfulWords(numWords?: number): string[] {

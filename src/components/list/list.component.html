@@ -24,7 +24,12 @@
 
 <div class="word-list">
   @for(word of list.slice(0,200); track word){
-  <div class="word" (click)="pickGuess(word)">
+  <div
+    class="word"
+    (click)="pickGuess(word)"
+    (keyup.enter)="pickGuess(word)"
+    tabindex="0"
+  >
     @for(letter of word; track $index){
     <div class="letter">{{ letter }}</div>
     }

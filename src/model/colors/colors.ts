@@ -18,8 +18,7 @@ export class Colors {
     [this.black]: {
       hex: '#3a3a3c',
       next: this.yellow,
-      filterMethod: (word: string, char: string, pos: number) =>
-        !word.includes(char),
+      filterMethod: (word: string, char: string) => !word.includes(char),
     },
     [this.yellow]: {
       hex: '#b59f3b',
@@ -36,8 +35,7 @@ export class Colors {
     [this.orange]: {
       hex: '#ff8c00',
       next: this.orange,
-      filterMethod: (word: string, char: string, pos: number) =>
-        word.includes(char),
+      filterMethod: (word: string, char: string) => word.includes(char),
     },
   };
 }

@@ -19,7 +19,12 @@
   <h3>Words with those letters:</h3>
   <div class="word-list">
     @for(word of words; track word){
-    <div class="word" (click)="pickGuess(word)">
+    <div
+      class="word"
+      (click)="pickGuess(word)"
+      (keyup.enter)="pickGuess(word)"
+      tabindex="0"
+    >
       @for(letter of word; track letter){
       <div class="letter">{{ letter }}</div>
       }

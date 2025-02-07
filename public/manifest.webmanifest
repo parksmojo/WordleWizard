@@ -1,0 +1,47 @@
+{
+  "name": "wordlewizard",
+  "short_name": "wordlewizard",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "icons/icon-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-216x216.png",
+      "sizes": "216x216",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-396x396.png",
+      "sizes": "396x396",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-504x504.png",
+      "sizes": "504x504",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

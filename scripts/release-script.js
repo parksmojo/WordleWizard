@@ -21,7 +21,7 @@ function execute(command) {
   execSync(command, { stdio: "inherit" });
 }
 
-execute(`npm version ${versionType} -m "Release version %s"`);
+execute(`npm version ${versionType} -m "Release(%s)"`);
 console.info(`echo Releasing a new ${versionType} version`);
 console.info(`  v${fromVersion} -> v${packageJson.version}`);
 execute("git push --follow-tags");

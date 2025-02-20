@@ -46,4 +46,12 @@ export class Filter {
   toString(): string {
     return `Filter: ${this._color} ${this._character} at ${this._position}`;
   }
+
+  equals(filter: Filter): boolean {
+    return (
+      this._character === filter.character &&
+      this._position === filter.position &&
+      this._color === filter.color
+    );
+  }
 }

@@ -60,28 +60,75 @@ export class WordList {
 
   private addFilters(filters: Filter[]): void {
     console.groupCollapsed('WordList adding filters');
-    for (const filter of filters) {
-      console.group('WordList checking ' + filter);
+    for (const newFilter of filters) {
+      console.group('WordList checking ' + newFilter);
       const existingIndex = this._filters.findIndex(
-        (char) => char.character === filter.character
+        (char) => char.character === newFilter.character
       );
-      if (existingIndex >= 0) {
-        console.log(
-          `Filter of '${filter.character.toUpperCase()}' already exists`
+      if (existingIndex === -1) {
+        console.log('Adding filter');
+        this._filters.push(newFilter);
+        console.groupEnd();
+        continue;
+      }
+
+      console.log(`Dupe '${newFilter.character.toUpperCase()}' filter`);
+      const oldFilter = this._filters[existingIndex];
+
+      // Re-entered filter
+      if (oldFilter.equals(newFilter)) {
+        console.log('Filter already exists');
+
+        // Same color, different position
+      } else if (
+        oldFilter.color === newFilter.color &&
+        oldFilter.position !== newFilter.position &&
+        oldFilter.color !== Colors.black
+      ) {
+        console.log('Is new position');
+        this._filters.push(newFilter);
+
+        // Yellows and greens can be complementary
+      } else if (
+        oldFilter.color !== Colors.black &&
+        newFilter.color !== Colors.black
+      ) {
+        console.log('More info');
+        this._filters.push(newFilter);
+
+        // Replace black and ensure no repeats
+      } else if (
+        oldFilter.color === Colors.black &&
+        newFilter.color !== Colors.black
+      ) {
+        console.log('Replacing black');
+        this._filters[existingIndex] = newFilter;
+        // ensure no repeats
+
+        // Yellow then Black means no repeats and not there
+      } else if (
+        oldFilter.color === Colors.yellow &&
+        newFilter.color === Colors.black
+      ) {
+        this._filters.push(
+          new Filter(newFilter.character, newFilter.position, Colors.yellow)
         );
-        if (this._filters[existingIndex].color == Colors.yellow) {
-          if (filter.color === Colors.green) {
-            console.log('Changing filter to green');
-            this._filters[existingIndex] = filter;
-          } else if (filter.color === Colors.yellow) {
-            console.log('Adding yellow filter');
-            this._filters.push(filter);
+        // ensure no repeats
+
+        // Green then Black means no repeats
+      } else if (
+        oldFilter.color === Colors.green &&
+        newFilter.color === Colors.black
+      ) {
+        for (let i = 0; i < 5; i++) {
+          if (i !== oldFilter.position) {
+            this._filters.push(
+              new Filter(oldFilter.character, i, Colors.yellow)
+            );
           }
         }
-      } else {
-        console.log('Adding filter');
-        this._filters.push(filter);
       }
+
       console.groupEnd();
     }
     console.groupEnd();

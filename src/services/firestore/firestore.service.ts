@@ -24,7 +24,7 @@ export class FirestoreService {
     return stats;
   }
 
-  public async saveUserStats(userStats: UserStats): Promise<void> {
+  private async saveUserStats(userStats: UserStats): Promise<void> {
     console.log(
       `DB uploading stats for user: ${userStats.username}(${userStats.uid})`
     );

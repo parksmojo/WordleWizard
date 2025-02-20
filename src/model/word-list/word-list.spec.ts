@@ -18,4 +18,15 @@ describe('WordList', () => {
     expect(list.possibleGuesses).toContain('crisp');
     expect(list.possibleGuesses.length).toBe(1);
   });
+
+  it('should filter greens correctly', () => {
+    list.filterByGuess(new Guess('goose', 'ggggg', 1));
+    expect(list.possibleGuesses).toContain('goose');
+    expect(list.possibleGuesses.length).toBe(1);
+  });
+
+  it('should filter out repeated letters', () => {
+    list.filterByGuess(new Guess('goose', 'bgbbb', 1));
+    expect(list.possibleGuesses).not.toContain('booby');
+  });
 });

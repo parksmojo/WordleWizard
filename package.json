@@ -3,7 +3,7 @@
   "version": "2.1.2",
   "scripts": {
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build -c production",
     "lint": "ng lint",
     "dev": "ng test --no-progress --browsers=ChromeHeadless",
     "test": "npm run lint && npm run dev -- --no-watch --code-coverage",

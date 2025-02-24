@@ -18,6 +18,8 @@
   position: fixed;
   width: 80vw;
   max-width: 600px;
+  max-height: 80%;
+  overflow: auto;
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);

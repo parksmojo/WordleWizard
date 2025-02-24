@@ -27,7 +27,7 @@
         <button (click)="sortWordsByScore()">Score</button>
         <button (click)="sortWordsByGuessNum()">Guess</button>
       </div>
-      @for(word of averages.slice(0,15); track word.word){
+      @for(word of averages.slice(0,settings.statResultCount); track word.word){
       <div class="table-row">
         <div>{{ word.word.toLocaleUpperCase() }}</div>
         <div>{{ word.count }}</div>

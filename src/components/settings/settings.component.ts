@@ -2,10 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import packageJson from '../../../package.json';
 import { AuthService } from '../../services/auth/auth.service';
+import { SettingsService } from '../../services/settings/settings.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
-  imports: [MatIconModule],
+  imports: [MatIconModule, FormsModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css',
 })
@@ -15,7 +17,10 @@ export class SettingsComponent {
   canLogout = false;
   version = packageJson.version;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    protected settings: SettingsService,
+    private authService: AuthService
+  ) {}
 
   closePopup() {
     console.log('Closing Settings popup');

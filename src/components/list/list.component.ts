@@ -8,6 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { GuessInputPopupComponent } from '../guess-input-popup/guess-input-popup.component';
 import { Guess } from '../../model/guess/guess';
+import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({
   selector: 'app-list',
@@ -23,6 +24,10 @@ export class ListComponent implements OnChanges {
 
   private _showAnswers = false;
   list: string[] = [];
+
+  constructor(private settings: SettingsService) {
+    this._showAnswers = settings.showOnlyAnswers;
+  }
 
   @Input()
   set showAnswers(value: boolean) {

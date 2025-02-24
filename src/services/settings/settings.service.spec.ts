@@ -21,6 +21,7 @@ describe('SettingsService', () => {
   it('should set statResultCount to 20', () => {
     service.statResultCount = 20;
     expect(service.statResultCount).toBe(20);
+    localStorage.removeItem('statResultCount');
   });
 
   it('should throw an error if statResultCount is less than 3', () => {

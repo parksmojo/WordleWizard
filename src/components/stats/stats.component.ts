@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { GuessStats, UserStats } from '../../model/user-stats/user-stats';
 import { HomeService } from '../../presenters/home/home.service';
+import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({
   selector: 'app-stats',
@@ -19,7 +20,10 @@ export class StatsComponent {
   private CountSortAsc = false;
   private GuessNumSortAsc = false;
 
-  constructor(private presenter: HomeService) {
+  constructor(
+    private presenter: HomeService,
+    protected settings: SettingsService
+  ) {
     this.refreshStats();
   }
 

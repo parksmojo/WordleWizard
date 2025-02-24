@@ -73,3 +73,11 @@ a {
   font-style: italic;
   margin: 8px;
 }
+
+#settings {
+  .setting {
+    input {
+      max-width: 20px;
+    }
+  }
+}

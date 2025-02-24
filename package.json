@@ -2,11 +2,11 @@
   "name": "wordlewizard",
   "version": "2.1.3",
   "scripts": {
-    "start": "ng serve",
+    "dev": "ng serve",
     "build": "ng build -c production",
     "lint": "ng lint",
-    "dev": "ng test --no-progress --browsers=ChromeHeadless",
-    "test": "npm run lint && npm run dev -- --no-watch --code-coverage",
+    "test:dev": "ng test --no-progress --browsers=ChromeHeadless",
+    "test": "npm run lint && npm run test:dev -- --no-watch --code-coverage",
     "deploy": "npm run test && npm run build && firebase deploy",
     "release": "node scripts/release-script.js"
   },

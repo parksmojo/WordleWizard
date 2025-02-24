@@ -22,7 +22,7 @@ function execute(command) {
 }
 
 execute(`npm version ${versionType} -m "Release(%s)"`);
-console.info(`echo Releasing a new ${versionType} version`);
+console.info(`Releasing a new ${versionType} version`);
 console.info(`  v${fromVersion} -> v${packageJson.version}`);
 execute("git push --follow-tags");
 execute("npm run deploy");

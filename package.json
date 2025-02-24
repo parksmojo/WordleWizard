@@ -7,8 +7,8 @@
     "lint": "ng lint",
     "test:dev": "ng test --no-progress --browsers=ChromeHeadless",
     "test": "npm run lint && npm run test:dev -- --no-watch --code-coverage",
-    "deploy": "npm run test && npm run build && firebase deploy",
-    "release": "node scripts/release-script.js"
+    "deploy": "npm run build && firebase deploy",
+    "release": "scripts/release.sh"
   },
   "private": true,
   "dependencies": {

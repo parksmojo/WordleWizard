@@ -5,6 +5,10 @@ const args = process.argv.slice(2);
 const fromVersion = packageJson.version;
 let versionType = "";
 
+function execute(command) {
+  execSync(command, { stdio: "inherit" });
+}
+
 if (args.includes("major") || args.includes("ma")) {
   versionType = "major";
 } else if (args.includes("minor") || args.includes("mi")) {
@@ -17,12 +21,10 @@ if (args.includes("major") || args.includes("ma")) {
   process.exit(1);
 }
 
-function execute(command) {
-  execSync(command, { stdio: "inherit" });
-}
-
-execute(`npm version ${versionType} -m "Release(%s)"`);
-console.info(`Releasing a new ${versionType} version`);
-console.info(`  v${fromVersion} -> v${packageJson.version}`);
-execute("git push --follow-tags");
-execute("npm run deploy");
+execute("npm run test");
+// execute(`npm version ${versionType} -m "Release(%s)"`);
+execute(`echo Releasing a new ${versionType} version`);
+execute(`echo  v${fromVersion} -> v${packageJson.version}`);
+// execute("git push --follow-tags");
+// execute("npm run deploy");
+execute("echo This script is deprecated. Please use the new bash script");

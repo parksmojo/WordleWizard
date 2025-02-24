@@ -33,6 +33,12 @@ export class FirestoreService {
   }
 
   public async saveGuess(user: User, guess: Guess): Promise<void> {
+    if (guess.score === 10) {
+      console.log(
+        'Not saving answer for user: ' + user.displayName + `(${user.uid})`
+      );
+      return;
+    }
     console.log(
       'DB saving guess: ' +
         guess +

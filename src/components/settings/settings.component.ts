@@ -16,11 +16,14 @@ export class SettingsComponent {
   @Output() complete = new EventEmitter<void>();
   canLogout = false;
   version = packageJson.version;
+  username;
 
   constructor(
     protected settings: SettingsService,
     private authService: AuthService
-  ) {}
+  ) {
+    this.username = this.authService.getCurrentUser()?.displayName ?? '';
+  }
 
   closePopup() {
     console.log('Closing Settings popup');

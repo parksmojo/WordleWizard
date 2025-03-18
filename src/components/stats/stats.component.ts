@@ -14,6 +14,7 @@ export class StatsComponent {
   @Input() show = false;
   stats: UserStats = { uid: 'n/a', username: 'n/a', guesses: [] };
   averages: GuessStats[] = [];
+  totalGuesses = 0;
 
   private NameSortAsc = true;
   private ScoreSortAsc = false;
@@ -38,6 +39,7 @@ export class StatsComponent {
     this.show = true;
     document.body.classList.add('no-scroll');
   }
+
   private async refreshStats() {
     console.log('Refreshing stats');
     this.stats = await this.presenter.getStats();
@@ -47,6 +49,17 @@ export class StatsComponent {
       score: parseFloat((guess.score / guess.count).toFixed(2)),
       guessNumber: Math.round(guess.guessNumber / guess.count),
     }));
+    this.totalGuesses = this.stats.guesses.reduce(
+      (sum, item) => sum + item.count,
+      0
+    );
+    this.averages.sort((a, b) => {
+      if (a.guessNumber === b.guessNumber) {
+        return b.score - a.score;
+      } else {
+        return a.guessNumber - b.guessNumber;
+      }
+    });
   }
 
   sortWords(

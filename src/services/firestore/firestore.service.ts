@@ -62,7 +62,6 @@ export class FirestoreService {
         count: 1,
       });
     }
-    userStats.guesses.sort((a, b) => b.score / b.count - a.score / a.count);
     await this.saveUserStats(userStats);
   }
 }
